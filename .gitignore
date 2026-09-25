@@ -1,0 +1,33 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtualenvs / uv
+.venv/
+uv.lock.bak
+
+# Secrets & local env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Generated scratch
+/tmp/
+*.oa3.json
