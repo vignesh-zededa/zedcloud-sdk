@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.storage import (
     Artifact,
     ArtifactList,
@@ -167,7 +168,7 @@ class StorageService(BaseService):
         ``GET /v1/apps/images/baseos/latest/hwclass/{imageArch}``
         operationId: ``ImageConfiguration_GetLatestImageVersion``
         """
-        path = f"/v1/apps/images/baseos/latest/hwclass/{image_arch}"
+        path = f"/v1/apps/images/baseos/latest/hwclass/{_q(image_arch)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -180,7 +181,7 @@ class StorageService(BaseService):
         ``PUT /v1/apps/images/baseos/latest/hwclass/{imageArch}``
         operationId: ``ImageConfiguration_MarkEveImageLatest2``
         """
-        path = f"/v1/apps/images/baseos/latest/hwclass/{image_arch}"
+        path = f"/v1/apps/images/baseos/latest/hwclass/{_q(image_arch)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -193,7 +194,7 @@ class StorageService(BaseService):
         ``GET /v1/apps/images/id/{id}``
         operationId: ``ImageConfiguration_GetImage``
         """
-        path = f"/v1/apps/images/id/{id}"
+        path = f"/v1/apps/images/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -206,7 +207,7 @@ class StorageService(BaseService):
         ``DELETE /v1/apps/images/id/{id}``
         operationId: ``ImageConfiguration_DeleteImage``
         """
-        path = f"/v1/apps/images/id/{id}"
+        path = f"/v1/apps/images/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -219,7 +220,7 @@ class StorageService(BaseService):
         ``PUT /v1/apps/images/id/{id}``
         operationId: ``ImageConfiguration_UpdateImage``
         """
-        path = f"/v1/apps/images/id/{id}"
+        path = f"/v1/apps/images/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -232,7 +233,7 @@ class StorageService(BaseService):
         ``PUT /v1/apps/images/id/{id}/uplink``
         operationId: ``ImageConfiguration_UplinkImage``
         """
-        path = f"/v1/apps/images/id/{id}/uplink"
+        path = f"/v1/apps/images/id/{_q(id)}/uplink"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -245,7 +246,7 @@ class StorageService(BaseService):
         ``GET /v1/apps/images/name/{name}``
         operationId: ``ImageConfiguration_GetImageByName``
         """
-        path = f"/v1/apps/images/name/{name}"
+        path = f"/v1/apps/images/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -264,7 +265,7 @@ class StorageService(BaseService):
         ``PUT /v1/apps/images/name/{name}/upload/chunked``
         operationId: ``ImageConfiguration_UploadImageChunked``
         """
-        path = f"/v1/apps/images/name/{name}/upload/chunked"
+        path = f"/v1/apps/images/name/{_q(name)}/upload/chunked"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -279,7 +280,7 @@ class StorageService(BaseService):
         ``PUT /v1/apps/images/name/{name}/upload/file``
         operationId: ``ImageConfiguration_UploadImageFile``
         """
-        path = f"/v1/apps/images/name/{name}/upload/file"
+        path = f"/v1/apps/images/name/{_q(name)}/upload/file"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -373,7 +374,7 @@ class StorageService(BaseService):
         ``GET /v1/artifacts/id/{id}``
         operationId: ``ArtifactManager_GetArtifactStream``
         """
-        path = f"/v1/artifacts/id/{id}"
+        path = f"/v1/artifacts/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -386,7 +387,7 @@ class StorageService(BaseService):
         ``DELETE /v1/artifacts/id/{id}``
         operationId: ``ArtifactManager_DeleteArtifact``
         """
-        path = f"/v1/artifacts/id/{id}"
+        path = f"/v1/artifacts/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -405,7 +406,7 @@ class StorageService(BaseService):
         ``PUT /v1/artifacts/id/{id}/upload/chunked``
         operationId: ``ArtifactManager_UploadArtifact``
         """
-        path = f"/v1/artifacts/id/{id}/upload/chunked"
+        path = f"/v1/artifacts/id/{_q(id)}/upload/chunked"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -420,7 +421,7 @@ class StorageService(BaseService):
         ``GET /v1/artifacts/id/{id}/url``
         operationId: ``ArtifactManager_GetArtifactSignedUrl``
         """
-        path = f"/v1/artifacts/id/{id}/url"
+        path = f"/v1/artifacts/id/{_q(id)}/url"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -492,7 +493,7 @@ class StorageService(BaseService):
         ``GET /v1/datastores/id/{id}``
         operationId: ``DatastoreConfiguration_GetDatastore``
         """
-        path = f"/v1/datastores/id/{id}"
+        path = f"/v1/datastores/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -505,7 +506,7 @@ class StorageService(BaseService):
         ``DELETE /v1/datastores/id/{id}``
         operationId: ``DatastoreConfiguration_DeleteDatastore``
         """
-        path = f"/v1/datastores/id/{id}"
+        path = f"/v1/datastores/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -518,7 +519,7 @@ class StorageService(BaseService):
         ``PUT /v1/datastores/id/{id}``
         operationId: ``DatastoreConfiguration_UpdateDatastore``
         """
-        path = f"/v1/datastores/id/{id}"
+        path = f"/v1/datastores/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -531,7 +532,7 @@ class StorageService(BaseService):
         ``GET /v1/datastores/name/{name}``
         operationId: ``DatastoreConfiguration_GetDatastoreByName``
         """
-        path = f"/v1/datastores/name/{name}"
+        path = f"/v1/datastores/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -652,7 +653,7 @@ class StorageService(BaseService):
         ``GET /v1/volumes/instances/id/{id}``
         operationId: ``VolumeInstanceConfiguration_GetVolumeInstance``
         """
-        path = f"/v1/volumes/instances/id/{id}"
+        path = f"/v1/volumes/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -665,7 +666,7 @@ class StorageService(BaseService):
         ``DELETE /v1/volumes/instances/id/{id}``
         operationId: ``VolumeInstanceConfiguration_DeleteVolumeInstance``
         """
-        path = f"/v1/volumes/instances/id/{id}"
+        path = f"/v1/volumes/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -683,7 +684,7 @@ class StorageService(BaseService):
         ``PUT /v1/volumes/instances/id/{id}``
         operationId: ``VolumeInstanceConfiguration_UpdateVolumeInstance``
         """
-        path = f"/v1/volumes/instances/id/{id}"
+        path = f"/v1/volumes/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -696,7 +697,7 @@ class StorageService(BaseService):
         ``GET /v1/volumes/instances/id/{id}/status``
         operationId: ``VolumeInstanceStatus_GetVolumeInstanceStatus``
         """
-        path = f"/v1/volumes/instances/id/{id}/status"
+        path = f"/v1/volumes/instances/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -722,7 +723,7 @@ class StorageService(BaseService):
         ``GET /v1/volumes/instances/id/{objid}/events``
         operationId: ``VolumeInstanceStatus_GetVolumeInstanceEvents``
         """
-        path = f"/v1/volumes/instances/id/{objid}/events"
+        path = f"/v1/volumes/instances/id/{_q(objid)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -753,7 +754,7 @@ class StorageService(BaseService):
         ``GET /v1/volumes/instances/name/{name}``
         operationId: ``VolumeInstanceConfiguration_GetVolumeInstanceByName``
         """
-        path = f"/v1/volumes/instances/name/{name}"
+        path = f"/v1/volumes/instances/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -766,7 +767,7 @@ class StorageService(BaseService):
         ``GET /v1/volumes/instances/name/{name}/status``
         operationId: ``VolumeInstanceStatus_GetVolumeInstanceStatusByName``
         """
-        path = f"/v1/volumes/instances/name/{name}/status"
+        path = f"/v1/volumes/instances/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -792,7 +793,7 @@ class StorageService(BaseService):
         ``GET /v1/volumes/instances/name/{objname}/events``
         operationId: ``VolumeInstanceStatus_GetVolumeInstanceEventsByName``
         """
-        path = f"/v1/volumes/instances/name/{objname}/events"
+        path = f"/v1/volumes/instances/name/{_q(objname)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time

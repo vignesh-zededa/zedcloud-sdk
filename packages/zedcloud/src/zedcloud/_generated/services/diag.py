@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.diag import (
     CloudVersionResp,
     ConfigServiceResp,
@@ -59,7 +60,7 @@ class DiagService(BaseService):
         ``GET /v1/cloud/ping/id/{pingId}``
         operationId: ``CloudDiagnostics_checkClusterHealth2``
         """
-        path = f"/v1/cloud/ping/id/{ping_id}"
+        path = f"/v1/cloud/ping/id/{_q(ping_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -100,7 +101,7 @@ class DiagService(BaseService):
         ``GET /v1/cloud/policies/id/{id}``
         operationId: ``CloudDiagnostics_GetCloudPolicyDocument``
         """
-        path = f"/v1/cloud/policies/id/{id}"
+        path = f"/v1/cloud/policies/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -113,7 +114,7 @@ class DiagService(BaseService):
         ``DELETE /v1/cloud/policies/id/{id}``
         operationId: ``CloudDiagnostics_DeleteCloudPolicyDocument``
         """
-        path = f"/v1/cloud/policies/id/{id}"
+        path = f"/v1/cloud/policies/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -152,7 +153,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/id/{id}/config``
         operationId: ``EdgeDiagnostics_GetDeviceTwinConfig``
         """
-        path = f"/v1/devices/id/{id}/config"
+        path = f"/v1/devices/id/{_q(id)}/config"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -165,7 +166,7 @@ class DiagService(BaseService):
         ``PUT /v1/devices/id/{id}/config``
         operationId: ``EdgeDiagnostics_RegenDeviceConfig``
         """
-        path = f"/v1/devices/id/{id}/config"
+        path = f"/v1/devices/id/{_q(id)}/config"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -178,7 +179,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/id/{id}/config/bootstrap``
         operationId: ``EdgeDiagnostics_GetDeviceTwinBootstrapConfig``
         """
-        path = f"/v1/devices/id/{id}/config/bootstrap"
+        path = f"/v1/devices/id/{_q(id)}/config/bootstrap"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -191,7 +192,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/id/{id}/config/next``
         operationId: ``EdgeDiagnostics_GetDeviceTwinNextConfig``
         """
-        path = f"/v1/devices/id/{id}/config/next"
+        path = f"/v1/devices/id/{_q(id)}/config/next"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -204,7 +205,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/id/{id}/config/offline``
         operationId: ``EdgeDiagnostics_GetDeviceTwinOfflineNextConfig``
         """
-        path = f"/v1/devices/id/{id}/config/offline"
+        path = f"/v1/devices/id/{_q(id)}/config/offline"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -217,7 +218,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/name/{name}/config``
         operationId: ``EdgeDiagnostics_GetDeviceTwinConfigByName``
         """
-        path = f"/v1/devices/name/{name}/config"
+        path = f"/v1/devices/name/{_q(name)}/config"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -230,7 +231,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/name/{name}/config/bootstrap``
         operationId: ``EdgeDiagnostics_GetDeviceTwinBootstrapConfigByName``
         """
-        path = f"/v1/devices/name/{name}/config/bootstrap"
+        path = f"/v1/devices/name/{_q(name)}/config/bootstrap"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -243,7 +244,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/name/{name}/config/next``
         operationId: ``EdgeDiagnostics_GetDeviceTwinNextConfigByName``
         """
-        path = f"/v1/devices/name/{name}/config/next"
+        path = f"/v1/devices/name/{_q(name)}/config/next"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -256,7 +257,7 @@ class DiagService(BaseService):
         ``GET /v1/devices/name/{name}/config/offline``
         operationId: ``EdgeDiagnostics_GetDeviceTwinOfflineConfigByName``
         """
-        path = f"/v1/devices/name/{name}/config/offline"
+        path = f"/v1/devices/name/{_q(name)}/config/offline"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -305,7 +306,7 @@ class DiagService(BaseService):
         ``GET /v1/events/timeSeries/{mType}``
         operationId: ``EdgeDiagnostics_GetResourceMetricsTimeline``
         """
-        path = f"/v1/events/timeSeries/{m_type}"
+        path = f"/v1/events/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if objtype is not None:
             params["objtype"] = objtype
@@ -369,7 +370,7 @@ class DiagService(BaseService):
         ``GET /v1/timeSeries/{mType}``
         operationId: ``EdgeDiagnostics_GetResourceMetricsTimeline2``
         """
-        path = f"/v1/timeSeries/{m_type}"
+        path = f"/v1/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if objtype is not None:
             params["objtype"] = objtype

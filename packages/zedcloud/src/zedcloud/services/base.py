@@ -4,12 +4,18 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from urllib.parse import quote
 
 from pydantic import BaseModel
 
 from zedcloud.http import HttpTransport
 
 T = TypeVar("T", bound=BaseModel)
+
+
+def quote_path_param(value: object) -> str:
+    """Percent-encode a path parameter so it stays within a single segment."""
+    return quote(str(value), safe="")
 
 
 class BaseService:

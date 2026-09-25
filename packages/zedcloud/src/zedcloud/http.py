@@ -15,6 +15,20 @@ from zedcloud.errors import ApiError, error_for_status
 T = TypeVar("T", bound=BaseModel)
 
 RETRYABLE_STATUS = frozenset({429, 500, 502, 503, 504})
+# Methods that are safe to replay after the server may have processed them.
+IDEMPOTENT_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})
+
+
+def _should_retry_status(method: str, status_code: int) -> bool:
+    """429 means the request was rejected unprocessed, so any method may retry.
+
+    5xx responses are ambiguous (the write may have been applied), so only
+    idempotent methods are replayed; a duplicate create or reboot is worse
+    than a surfaced error.
+    """
+    if status_code == 429:
+        return True
+    return status_code in RETRYABLE_STATUS and method in IDEMPOTENT_METHODS
 
 
 class HttpTransport:
@@ -70,17 +84,26 @@ class HttpTransport:
             body = json_body.model_dump(mode="json", by_alias=True, exclude_none=True)
 
         query = _normalize_params(params)
+        method = method.upper()
         attempt = 0
         while True:
-            response = self._client.request(
-                method.upper(),
-                url,
-                params=query,
-                json=body,
-                headers=merged,
-                timeout=self.timeout,
-            )
-            if response.status_code in RETRYABLE_STATUS and attempt < self.max_retries:
+            try:
+                response = self._client.request(
+                    method,
+                    url,
+                    params=query,
+                    json=body,
+                    headers=merged,
+                    timeout=self.timeout,
+                )
+            except (httpx.ConnectError, httpx.ConnectTimeout):
+                # The request never reached the server, so replaying is safe.
+                if attempt >= self.max_retries:
+                    raise
+                time.sleep(self.retry_backoff * (2**attempt))
+                attempt += 1
+                continue
+            if _should_retry_status(method, response.status_code) and attempt < self.max_retries:
                 retry_after = response.headers.get("Retry-After")
                 if retry_after and retry_after.isdigit():
                     delay = float(retry_after)
@@ -89,9 +112,7 @@ class HttpTransport:
                 time.sleep(delay)
                 attempt += 1
                 continue
-            return self._decode(
-                response, method=method.upper(), url=url, response_model=response_model
-            )
+            return self._decode(response, method=method, url=url, response_model=response_model)
 
     def _decode(
         self,

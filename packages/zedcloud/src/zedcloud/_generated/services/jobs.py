@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.jobs import (
     BulkConfig,
     JobConfig,
@@ -196,7 +197,7 @@ class JobsService(BaseService):
         ``GET /v1/jobs/id/{id}``
         operationId: ``BulkJobOps_GetJobById``
         """
-        path = f"/v1/jobs/id/{id}"
+        path = f"/v1/jobs/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -209,7 +210,7 @@ class JobsService(BaseService):
         ``PUT /v1/jobs/id/{id}``
         operationId: ``BulkJobOps_UpdateJob``
         """
-        path = f"/v1/jobs/id/{id}"
+        path = f"/v1/jobs/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -222,7 +223,7 @@ class JobsService(BaseService):
         ``GET /v1/jobs/id/{id}/objectType/{objectType}``
         operationId: ``BulkJobOps_GetJob``
         """
-        path = f"/v1/jobs/id/{id}/objectType/{object_type}"
+        path = f"/v1/jobs/id/{_q(id)}/objectType/{_q(object_type)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -235,7 +236,7 @@ class JobsService(BaseService):
         ``DELETE /v1/jobs/id/{id}/objectType/{objectType}``
         operationId: ``BulkJobOps_DeleteJob``
         """
-        path = f"/v1/jobs/id/{id}/objectType/{object_type}"
+        path = f"/v1/jobs/id/{_q(id)}/objectType/{_q(object_type)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -261,7 +262,7 @@ class JobsService(BaseService):
         ``GET /v1/jobs/name/{name}/objectType/{objectType}``
         operationId: ``BulkJobOps_GetJobByName``
         """
-        path = f"/v1/jobs/name/{name}/objectType/{object_type}"
+        path = f"/v1/jobs/name/{_q(name)}/objectType/{_q(object_type)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

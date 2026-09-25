@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.app_profiles import (
     AppProfile,
     AppProfileRead,
@@ -86,7 +87,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/appprofiles/id/{id}``
         operationId: ``AppProfileService_GetAppProfile``
         """
-        path = f"/v1/appprofiles/id/{id}"
+        path = f"/v1/appprofiles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -99,7 +100,7 @@ class AppProfilesService(BaseService):
         ``DELETE /v1/appprofiles/id/{id}``
         operationId: ``AppProfileService_DeleteAppProfile``
         """
-        path = f"/v1/appprofiles/id/{id}"
+        path = f"/v1/appprofiles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -112,7 +113,7 @@ class AppProfilesService(BaseService):
         ``PUT /v1/appprofiles/id/{id}``
         operationId: ``AppProfileService_UpdateAppProfile``
         """
-        path = f"/v1/appprofiles/id/{id}"
+        path = f"/v1/appprofiles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -135,7 +136,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/appprofiles/id/{id}/version``
         operationId: ``AppProfileService_QueryAppProfileRevisionById``
         """
-        path = f"/v1/appprofiles/id/{id}/version"
+        path = f"/v1/appprofiles/id/{_q(id)}/version"
         params: dict[str, Any] = {}
         if next_page_token is not None:
             params["next.pageToken"] = next_page_token
@@ -160,7 +161,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/appprofiles/name/{name}``
         operationId: ``AppProfileService_GetAppProfileByName``
         """
-        path = f"/v1/appprofiles/name/{name}"
+        path = f"/v1/appprofiles/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -183,7 +184,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/appprofiles/name/{name}/version``
         operationId: ``AppProfileService_QueryAppProfileRevisionByName``
         """
-        path = f"/v1/appprofiles/name/{name}/version"
+        path = f"/v1/appprofiles/name/{_q(name)}/version"
         params: dict[str, Any] = {}
         if next_page_token is not None:
             params["next.pageToken"] = next_page_token
@@ -261,7 +262,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/assetgroups/id/{id}``
         operationId: ``AssetGroupService_GetAssetGroup``
         """
-        path = f"/v1/assetgroups/id/{id}"
+        path = f"/v1/assetgroups/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -274,7 +275,7 @@ class AppProfilesService(BaseService):
         ``DELETE /v1/assetgroups/id/{id}``
         operationId: ``AssetGroupService_DeleteAssetGroup``
         """
-        path = f"/v1/assetgroups/id/{id}"
+        path = f"/v1/assetgroups/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -287,7 +288,7 @@ class AppProfilesService(BaseService):
         ``PUT /v1/assetgroups/id/{id}``
         operationId: ``AssetGroupService_UpdateAssetGroup``
         """
-        path = f"/v1/assetgroups/id/{id}"
+        path = f"/v1/assetgroups/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -300,7 +301,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/assetgroups/name/{name}``
         operationId: ``AssetGroupService_GetAssetGroupByName``
         """
-        path = f"/v1/assetgroups/name/{name}"
+        path = f"/v1/assetgroups/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -363,7 +364,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/profiledeployments/id/{id}``
         operationId: ``ProfileDeploymentService_GetProfileDeployment``
         """
-        path = f"/v1/profiledeployments/id/{id}"
+        path = f"/v1/profiledeployments/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -376,7 +377,7 @@ class AppProfilesService(BaseService):
         ``DELETE /v1/profiledeployments/id/{id}``
         operationId: ``ProfileDeploymentService_DeleteProfileDeployment``
         """
-        path = f"/v1/profiledeployments/id/{id}"
+        path = f"/v1/profiledeployments/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -389,7 +390,7 @@ class AppProfilesService(BaseService):
         ``PUT /v1/profiledeployments/id/{id}``
         operationId: ``ProfileDeploymentService_UpdateProfileDeployment``
         """
-        path = f"/v1/profiledeployments/id/{id}"
+        path = f"/v1/profiledeployments/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -411,7 +412,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/profiledeployments/id/{id}/resourcestatus``
         operationId: ``ProfileDeploymentService_QueryProfileDeploymentResourceStatus``
         """
-        path = f"/v1/profiledeployments/id/{id}/resourcestatus"
+        path = f"/v1/profiledeployments/id/{_q(id)}/resourcestatus"
         params: dict[str, Any] = {}
         if next_page_token is not None:
             params["next.pageToken"] = next_page_token
@@ -434,7 +435,7 @@ class AppProfilesService(BaseService):
         ``GET /v1/profiledeployments/name/{name}``
         operationId: ``ProfileDeploymentService_GetProfileDeploymentByName``
         """
-        path = f"/v1/profiledeployments/name/{name}"
+        path = f"/v1/profiledeployments/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

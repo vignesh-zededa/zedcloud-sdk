@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.orchestration import (
     APIUsageResp,
     ClusterInstStatusListMsg,
@@ -54,7 +55,7 @@ class OrchestrationService(BaseService):
         ``DELETE /v1/azure/deployment/policyid/{policyId}``
         operationId: ``AzureDeployments_DeleteDeploymentPolicy``
         """
-        path = f"/v1/azure/deployment/policyid/{policy_id}"
+        path = f"/v1/azure/deployment/policyid/{_q(policy_id)}"
         params: dict[str, Any] = {}
         if deployment_id is not None:
             params["deploymentId"] = deployment_id
@@ -69,7 +70,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/azure/edgedevice/modulepolicyid/{modulePolicyId}``
         operationId: ``AzureDeployments_GetModulePolicy``
         """
-        path = f"/v1/azure/edgedevice/modulepolicyid/{module_policy_id}"
+        path = f"/v1/azure/edgedevice/modulepolicyid/{_q(module_policy_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -144,7 +145,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/id/{id}``
         operationId: ``ClusterInstanceConfiguration_GetClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}"
+        path = f"/v1/cluster/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -157,7 +158,7 @@ class OrchestrationService(BaseService):
         ``DELETE /v1/cluster/instances/id/{id}``
         operationId: ``ClusterInstanceConfiguration_DeleteClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}"
+        path = f"/v1/cluster/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -170,7 +171,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/cluster/instances/id/{id}``
         operationId: ``ClusterInstanceConfiguration_UpdateClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}"
+        path = f"/v1/cluster/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -183,7 +184,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/cluster/instances/id/{id}/activate``
         operationId: ``ClusterInstanceConfiguration_ActivateClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}/activate"
+        path = f"/v1/cluster/instances/id/{_q(id)}/activate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -196,7 +197,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/cluster/instances/id/{id}/deactivate``
         operationId: ``ClusterInstanceConfiguration_DeactivateClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}/deactivate"
+        path = f"/v1/cluster/instances/id/{_q(id)}/deactivate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -209,7 +210,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/cluster/instances/id/{id}/refresh``
         operationId: ``ClusterInstanceConfiguration_RefreshClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}/refresh"
+        path = f"/v1/cluster/instances/id/{_q(id)}/refresh"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -222,7 +223,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/cluster/instances/id/{id}/refresh/purge``
         operationId: ``ClusterInstanceConfiguration_RefreshPurgeClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}/refresh/purge"
+        path = f"/v1/cluster/instances/id/{_q(id)}/refresh/purge"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -235,7 +236,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/cluster/instances/id/{id}/restart``
         operationId: ``ClusterInstanceConfiguration_RestartClusterInstance``
         """
-        path = f"/v1/cluster/instances/id/{id}/restart"
+        path = f"/v1/cluster/instances/id/{_q(id)}/restart"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -248,7 +249,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/id/{id}/status``
         operationId: ``ClusterInstanceStatus_GetClusterInstanceStatus``
         """
-        path = f"/v1/cluster/instances/id/{id}/status"
+        path = f"/v1/cluster/instances/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -261,7 +262,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/id/{id}/status/kubeconfig``
         operationId: ``ClusterInstanceStatus_GetClusterInstanceKubeconfigById``
         """
-        path = f"/v1/cluster/instances/id/{id}/status/kubeconfig"
+        path = f"/v1/cluster/instances/id/{_q(id)}/status/kubeconfig"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -274,7 +275,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/id/{id}/status/kubeconfig/download``
         operationId: ``ClusterInstanceStatus_DownloadClusterInstanceKubeconfigById``
         """
-        path = f"/v1/cluster/instances/id/{id}/status/kubeconfig/download"
+        path = f"/v1/cluster/instances/id/{_q(id)}/status/kubeconfig/download"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -300,7 +301,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/id/{objid}/events``
         operationId: ``ClusterInstanceStatus_GetClusterInstanceEvents``
         """
-        path = f"/v1/cluster/instances/id/{objid}/events"
+        path = f"/v1/cluster/instances/id/{_q(objid)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -331,7 +332,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/name/{name}``
         operationId: ``ClusterInstanceConfiguration_GetClusterInstanceByName``
         """
-        path = f"/v1/cluster/instances/name/{name}"
+        path = f"/v1/cluster/instances/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -344,7 +345,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/name/{name}/status``
         operationId: ``ClusterInstanceStatus_GetClusterInstanceStatusByName``
         """
-        path = f"/v1/cluster/instances/name/{name}/status"
+        path = f"/v1/cluster/instances/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -357,7 +358,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/name/{name}/status/kubeconfig``
         operationId: ``ClusterInstanceStatus_GetClusterInstanceKubeconfigByName``
         """
-        path = f"/v1/cluster/instances/name/{name}/status/kubeconfig"
+        path = f"/v1/cluster/instances/name/{_q(name)}/status/kubeconfig"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -370,7 +371,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/name/{name}/status/kubeconfig/download``
         operationId: ``ClusterInstanceStatus_DownloadClusterInstanceKubeconfigByName``
         """
-        path = f"/v1/cluster/instances/name/{name}/status/kubeconfig/download"
+        path = f"/v1/cluster/instances/name/{_q(name)}/status/kubeconfig/download"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -396,7 +397,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/cluster/instances/name/{objname}/events``
         operationId: ``ClusterInstanceStatus_GetClusterInstanceEventsByName``
         """
-        path = f"/v1/cluster/instances/name/{objname}/events"
+        path = f"/v1/cluster/instances/name/{_q(objname)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -600,7 +601,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/datastreams/id/{id}``
         operationId: ``DataStreamConfigs_GetDataStreamById``
         """
-        path = f"/v1/datastreams/id/{id}"
+        path = f"/v1/datastreams/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -613,7 +614,7 @@ class OrchestrationService(BaseService):
         ``DELETE /v1/datastreams/id/{id}``
         operationId: ``DataStreamConfigs_DeleteDataStream``
         """
-        path = f"/v1/datastreams/id/{id}"
+        path = f"/v1/datastreams/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -626,7 +627,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/datastreams/id/{id}``
         operationId: ``DataStreamConfigs_UpdateDataStream``
         """
-        path = f"/v1/datastreams/id/{id}"
+        path = f"/v1/datastreams/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -639,7 +640,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/datastreams/name/{name}``
         operationId: ``DataStreamConfigs_GetDataStreamByName``
         """
-        path = f"/v1/datastreams/name/{name}"
+        path = f"/v1/datastreams/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -705,7 +706,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/plugins/id/{id}``
         operationId: ``ThirdPartyPluginManagement_GetPluginById``
         """
-        path = f"/v1/plugins/id/{id}"
+        path = f"/v1/plugins/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -718,7 +719,7 @@ class OrchestrationService(BaseService):
         ``DELETE /v1/plugins/id/{id}``
         operationId: ``ThirdPartyPluginManagement_DeletePlugin``
         """
-        path = f"/v1/plugins/id/{id}"
+        path = f"/v1/plugins/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -731,7 +732,7 @@ class OrchestrationService(BaseService):
         ``PUT /v1/plugins/id/{id}``
         operationId: ``ThirdPartyPluginManagement_UpdatePlugin``
         """
-        path = f"/v1/plugins/id/{id}"
+        path = f"/v1/plugins/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -744,7 +745,7 @@ class OrchestrationService(BaseService):
         ``GET /v1/plugins/name/{name}``
         operationId: ``ThirdPartyPluginManagement_GetPluginByName``
         """
-        path = f"/v1/plugins/name/{name}"
+        path = f"/v1/plugins/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

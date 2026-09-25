@@ -378,6 +378,7 @@ def generate_service(swagger: dict[str, Any], ns: str, class_name: str) -> None:
         "from typing import Any",
         "",
         "from zedcloud.services.base import BaseService",
+        "from zedcloud.services.base import quote_path_param as _q",
     ]
     if models_needed:
         # import models used in signatures / response_model=
@@ -488,7 +489,9 @@ def render_method(
         swagger_name = param["name"]
         pname = param_py_name(swagger_name)
         # replace {id} style
-        fmt_path = fmt_path.replace("{" + swagger_name + "}", "{" + pname + "}")
+        # Percent-encode every path value so names containing "/", "?" or "#"
+        # cannot escape their path segment.
+        fmt_path = fmt_path.replace("{" + swagger_name + "}", "{_q(" + pname + ")}")
         path_format_args.append(f"{pname}={pname}")
     if path_params:
         body_lines.append(f'        path = f"{fmt_path}"')

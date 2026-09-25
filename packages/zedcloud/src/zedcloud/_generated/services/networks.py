@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.networks import (
     NetConfig,
     NetConfigForUpdateHttpRequest,
@@ -102,7 +103,7 @@ class NetworksService(BaseService):
         ``GET /v1/netinsts/id/{id}``
         operationId: ``EdgeNetworkInstanceConfiguration_GetEdgeNetworkInstance``
         """
-        path = f"/v1/netinsts/id/{id}"
+        path = f"/v1/netinsts/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -115,7 +116,7 @@ class NetworksService(BaseService):
         ``DELETE /v1/netinsts/id/{id}``
         operationId: ``EdgeNetworkInstanceConfiguration_DeleteEdgeNetworkInstance``
         """
-        path = f"/v1/netinsts/id/{id}"
+        path = f"/v1/netinsts/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -133,7 +134,7 @@ class NetworksService(BaseService):
         ``PUT /v1/netinsts/id/{id}``
         operationId: ``EdgeNetworkInstanceConfiguration_UpdateEdgeNetworkInstance``
         """
-        path = f"/v1/netinsts/id/{id}"
+        path = f"/v1/netinsts/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -146,7 +147,7 @@ class NetworksService(BaseService):
         ``GET /v1/netinsts/id/{id}/status``
         operationId: ``EdgeNetworkInstanceStatus_GetEdgeNetworkInstanceStatus``
         """
-        path = f"/v1/netinsts/id/{id}/status"
+        path = f"/v1/netinsts/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -159,7 +160,7 @@ class NetworksService(BaseService):
         ``GET /v1/netinsts/name/{name}``
         operationId: ``EdgeNetworkInstanceConfiguration_GetEdgeNetworkInstanceByName``
         """
-        path = f"/v1/netinsts/name/{name}"
+        path = f"/v1/netinsts/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -172,7 +173,7 @@ class NetworksService(BaseService):
         ``GET /v1/netinsts/name/{name}/status``
         operationId: ``EdgeNetworkInstanceStatus_GetEdgeNetworkInstanceStatusByName``
         """
-        path = f"/v1/netinsts/name/{name}/status"
+        path = f"/v1/netinsts/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -412,7 +413,7 @@ class NetworksService(BaseService):
         ``GET /v1/networks/id/{id}``
         operationId: ``EdgeNetworkConfiguration_GetEdgeNetwork``
         """
-        path = f"/v1/networks/id/{id}"
+        path = f"/v1/networks/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -425,7 +426,7 @@ class NetworksService(BaseService):
         ``DELETE /v1/networks/id/{id}``
         operationId: ``EdgeNetworkConfiguration_DeleteEdgeNetwork``
         """
-        path = f"/v1/networks/id/{id}"
+        path = f"/v1/networks/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -443,7 +444,7 @@ class NetworksService(BaseService):
         ``PUT /v1/networks/id/{id}``
         operationId: ``EdgeNetworkConfiguration_UpdateEdgeNetwork``
         """
-        path = f"/v1/networks/id/{id}"
+        path = f"/v1/networks/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -456,7 +457,7 @@ class NetworksService(BaseService):
         ``GET /v1/networks/id/{id}/devices``
         operationId: ``EdgeNetworkConfiguration_GetEdgeNetworkDevicesById``
         """
-        path = f"/v1/networks/id/{id}/devices"
+        path = f"/v1/networks/id/{_q(id)}/devices"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -469,7 +470,7 @@ class NetworksService(BaseService):
         ``GET /v1/networks/name/{name}``
         operationId: ``EdgeNetworkConfiguration_GetEdgeNetworkByName``
         """
-        path = f"/v1/networks/name/{name}"
+        path = f"/v1/networks/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

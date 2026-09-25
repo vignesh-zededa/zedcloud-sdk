@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.iam import (
     AAAFrontendGenerateTokenResponse,
     AAAFrontendLoginModeRequest,
@@ -125,7 +126,7 @@ class IamService(BaseService):
         ``GET /v1/authorization/profiles/id/{id}``
         operationId: ``IdentityAccessManagement_GetAuthProfile``
         """
-        path = f"/v1/authorization/profiles/id/{id}"
+        path = f"/v1/authorization/profiles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -138,7 +139,7 @@ class IamService(BaseService):
         ``DELETE /v1/authorization/profiles/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteAuthProfile``
         """
-        path = f"/v1/authorization/profiles/id/{id}"
+        path = f"/v1/authorization/profiles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -151,7 +152,7 @@ class IamService(BaseService):
         ``PUT /v1/authorization/profiles/id/{id}``
         operationId: ``IdentityAccessManagement_UpdateAuthProfile``
         """
-        path = f"/v1/authorization/profiles/id/{id}"
+        path = f"/v1/authorization/profiles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -164,7 +165,7 @@ class IamService(BaseService):
         ``GET /v1/authorization/profiles/name/{name}``
         operationId: ``IdentityAccessManagement_GetAuthProfileByName``
         """
-        path = f"/v1/authorization/profiles/name/{name}"
+        path = f"/v1/authorization/profiles/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -251,7 +252,7 @@ class IamService(BaseService):
         ``GET /v1/cloud/policies/id/{id}``
         operationId: ``IdentityAccessManagement_GetDocPolicy``
         """
-        path = f"/v1/cloud/policies/id/{id}"
+        path = f"/v1/cloud/policies/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -264,7 +265,7 @@ class IamService(BaseService):
         ``DELETE /v1/cloud/policies/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteDocPolicy``
         """
-        path = f"/v1/cloud/policies/id/{id}"
+        path = f"/v1/cloud/policies/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -316,7 +317,7 @@ class IamService(BaseService):
         ``DELETE /v1/credentials/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteCredential``
         """
-        path = f"/v1/credentials/id/{id}"
+        path = f"/v1/credentials/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -416,7 +417,7 @@ class IamService(BaseService):
         ``GET /v1/enterprises/id/{id}``
         operationId: ``IdentityAccessManagement_GetEnterprise``
         """
-        path = f"/v1/enterprises/id/{id}"
+        path = f"/v1/enterprises/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -429,7 +430,7 @@ class IamService(BaseService):
         ``DELETE /v1/enterprises/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteEnterprise``
         """
-        path = f"/v1/enterprises/id/{id}"
+        path = f"/v1/enterprises/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -442,7 +443,7 @@ class IamService(BaseService):
         ``PUT /v1/enterprises/id/{id}``
         operationId: ``IdentityAccessManagement_UpdateEnterprise2``
         """
-        path = f"/v1/enterprises/id/{id}"
+        path = f"/v1/enterprises/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -455,7 +456,7 @@ class IamService(BaseService):
         ``GET /v1/enterprises/name/{name}``
         operationId: ``IdentityAccessManagement_GetEnterpriseByName``
         """
-        path = f"/v1/enterprises/name/{name}"
+        path = f"/v1/enterprises/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -773,7 +774,7 @@ class IamService(BaseService):
         ``GET /v1/realms/id/{id}``
         operationId: ``IdentityAccessManagement_GetRealm``
         """
-        path = f"/v1/realms/id/{id}"
+        path = f"/v1/realms/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -786,7 +787,7 @@ class IamService(BaseService):
         ``DELETE /v1/realms/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteRealm``
         """
-        path = f"/v1/realms/id/{id}"
+        path = f"/v1/realms/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -799,7 +800,7 @@ class IamService(BaseService):
         ``PUT /v1/realms/id/{id}``
         operationId: ``IdentityAccessManagement_UpdateRealm``
         """
-        path = f"/v1/realms/id/{id}"
+        path = f"/v1/realms/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -812,7 +813,7 @@ class IamService(BaseService):
         ``GET /v1/realms/name/{name}``
         operationId: ``IdentityAccessManagement_GetRealmByName``
         """
-        path = f"/v1/realms/name/{name}"
+        path = f"/v1/realms/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1035,7 +1036,7 @@ class IamService(BaseService):
         ``GET /v1/roles/id/{id}``
         operationId: ``IdentityAccessManagement_GetRole``
         """
-        path = f"/v1/roles/id/{id}"
+        path = f"/v1/roles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1048,7 +1049,7 @@ class IamService(BaseService):
         ``DELETE /v1/roles/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteRole``
         """
-        path = f"/v1/roles/id/{id}"
+        path = f"/v1/roles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1061,7 +1062,7 @@ class IamService(BaseService):
         ``PUT /v1/roles/id/{id}``
         operationId: ``IdentityAccessManagement_UpdateRole``
         """
-        path = f"/v1/roles/id/{id}"
+        path = f"/v1/roles/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1074,7 +1075,7 @@ class IamService(BaseService):
         ``GET /v1/roles/name/{name}``
         operationId: ``IdentityAccessManagement_GetRoleByName``
         """
-        path = f"/v1/roles/name/{name}"
+        path = f"/v1/roles/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1167,7 +1168,7 @@ class IamService(BaseService):
         ``GET /v1/sessions/token/{sessionToken.base64}``
         operationId: ``IdentityAccessManagement_GetUserSession``
         """
-        path = f"/v1/sessions/token/{session_token_base64}"
+        path = f"/v1/sessions/token/{_q(session_token_base64)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1254,7 +1255,7 @@ class IamService(BaseService):
         ``GET /v1/users/id/{id}``
         operationId: ``IdentityAccessManagement_GetUser``
         """
-        path = f"/v1/users/id/{id}"
+        path = f"/v1/users/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1267,7 +1268,7 @@ class IamService(BaseService):
         ``DELETE /v1/users/id/{id}``
         operationId: ``IdentityAccessManagement_DeleteUser``
         """
-        path = f"/v1/users/id/{id}"
+        path = f"/v1/users/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1280,7 +1281,7 @@ class IamService(BaseService):
         ``PUT /v1/users/id/{id}``
         operationId: ``IdentityAccessManagement_UpdateUser2``
         """
-        path = f"/v1/users/id/{id}"
+        path = f"/v1/users/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1293,7 +1294,7 @@ class IamService(BaseService):
         ``GET /v1/users/name/{name}``
         operationId: ``IdentityAccessManagement_GetUserByName``
         """
-        path = f"/v1/users/name/{name}"
+        path = f"/v1/users/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

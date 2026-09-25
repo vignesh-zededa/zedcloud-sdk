@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.nodes import (
     CEPCommonSCEPProfile,
     CEPCommonSCEPProfiles,
@@ -148,7 +149,7 @@ class NodesService(BaseService):
         ``GET /v1/brands/global/id/{id}``
         operationId: ``HardwareModel_GetGlobalHardwareBrand``
         """
-        path = f"/v1/brands/global/id/{id}"
+        path = f"/v1/brands/global/id/{_q(id)}"
         params: dict[str, Any] = {}
         if enterprise_id is not None:
             params["enterpriseId"] = enterprise_id
@@ -163,7 +164,7 @@ class NodesService(BaseService):
         ``GET /v1/brands/global/name/{name}``
         operationId: ``HardwareModel_GetGlobalHardwareBrandByName``
         """
-        path = f"/v1/brands/global/name/{name}"
+        path = f"/v1/brands/global/name/{_q(name)}"
         params: dict[str, Any] = {}
         if enterprise_id is not None:
             params["enterpriseId"] = enterprise_id
@@ -178,7 +179,7 @@ class NodesService(BaseService):
         ``GET /v1/brands/id/{id}``
         operationId: ``HardwareModel_GetHardwareBrand``
         """
-        path = f"/v1/brands/id/{id}"
+        path = f"/v1/brands/id/{_q(id)}"
         params: dict[str, Any] = {}
         if enterprise_id is not None:
             params["enterpriseId"] = enterprise_id
@@ -193,7 +194,7 @@ class NodesService(BaseService):
         ``DELETE /v1/brands/id/{id}``
         operationId: ``HardwareModel_DeleteHardwareBrand``
         """
-        path = f"/v1/brands/id/{id}"
+        path = f"/v1/brands/id/{_q(id)}"
         params: dict[str, Any] = {}
         if enterprise_id is not None:
             params["enterpriseId"] = enterprise_id
@@ -208,7 +209,7 @@ class NodesService(BaseService):
         ``PUT /v1/brands/id/{id}``
         operationId: ``HardwareModel_UpdateHardwareBrand``
         """
-        path = f"/v1/brands/id/{id}"
+        path = f"/v1/brands/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -221,7 +222,7 @@ class NodesService(BaseService):
         ``GET /v1/brands/name/{name}``
         operationId: ``HardwareModel_GetHardwareBrandByName``
         """
-        path = f"/v1/brands/name/{name}"
+        path = f"/v1/brands/name/{_q(name)}"
         params: dict[str, Any] = {}
         if enterprise_id is not None:
             params["enterpriseId"] = enterprise_id
@@ -289,7 +290,7 @@ class NodesService(BaseService):
         ``GET /v1/ceps/id/{id}``
         operationId: ``CertificateEnrollmentProfileConfiguration_GetCEPById``
         """
-        path = f"/v1/ceps/id/{id}"
+        path = f"/v1/ceps/id/{_q(id)}"
         params: dict[str, Any] = {}
         if show_projects_list is not None:
             params["showProjectsList"] = show_projects_list
@@ -304,7 +305,7 @@ class NodesService(BaseService):
         ``DELETE /v1/ceps/id/{id}``
         operationId: ``CertificateEnrollmentProfileConfiguration_DeleteCEP``
         """
-        path = f"/v1/ceps/id/{id}"
+        path = f"/v1/ceps/id/{_q(id)}"
         params: dict[str, Any] = {}
         if show_projects_list is not None:
             params["showProjectsList"] = show_projects_list
@@ -319,7 +320,7 @@ class NodesService(BaseService):
         ``PUT /v1/ceps/id/{id}``
         operationId: ``CertificateEnrollmentProfileConfiguration_UpdateCEP``
         """
-        path = f"/v1/ceps/id/{id}"
+        path = f"/v1/ceps/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -332,7 +333,7 @@ class NodesService(BaseService):
         ``GET /v1/ceps/name/{name}``
         operationId: ``CertificateEnrollmentProfileConfiguration_GetCEPByName``
         """
-        path = f"/v1/ceps/name/{name}"
+        path = f"/v1/ceps/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -419,7 +420,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}``
         operationId: ``EdgeNodeConfiguration_GetEdgeNode``
         """
-        path = f"/v1/devices/id/{id}"
+        path = f"/v1/devices/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -432,7 +433,7 @@ class NodesService(BaseService):
         ``DELETE /v1/devices/id/{id}``
         operationId: ``EdgeNodeConfiguration_DeleteEdgeNode``
         """
-        path = f"/v1/devices/id/{id}"
+        path = f"/v1/devices/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -445,7 +446,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}``
         operationId: ``EdgeNodeConfiguration_UpdateEdgeNode``
         """
-        path = f"/v1/devices/id/{id}"
+        path = f"/v1/devices/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -458,7 +459,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/activate``
         operationId: ``EdgeNodeConfiguration_ActivateEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/activate"
+        path = f"/v1/devices/id/{_q(id)}/activate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -471,7 +472,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/apply``
         operationId: ``EdgeNodeConfiguration_UpdateEdgeNodeBaseOS``
         """
-        path = f"/v1/devices/id/{id}/apply"
+        path = f"/v1/devices/id/{_q(id)}/apply"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -484,7 +485,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/attestation``
         operationId: ``EdgeNodeConfiguration_GetEdgeNodeAttestation``
         """
-        path = f"/v1/devices/id/{id}/attestation"
+        path = f"/v1/devices/id/{_q(id)}/attestation"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -497,7 +498,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/baseos/upgrade/retry``
         operationId: ``EdgeNodeConfiguration_BaseOsUpgradeRetryEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/baseos/upgrade/retry"
+        path = f"/v1/devices/id/{_q(id)}/baseos/upgrade/retry"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -510,7 +511,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/deactivate``
         operationId: ``EdgeNodeConfiguration_DeActivateEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/deactivate"
+        path = f"/v1/devices/id/{_q(id)}/deactivate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -523,7 +524,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/debug/disable``
         operationId: ``EdgeNodeConfiguration_StopDebugEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/debug/disable"
+        path = f"/v1/devices/id/{_q(id)}/debug/disable"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -536,7 +537,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/debug/enable``
         operationId: ``EdgeNodeConfiguration_StartDebugEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/debug/enable"
+        path = f"/v1/devices/id/{_q(id)}/debug/enable"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -549,7 +550,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/edgeview/clientscript``
         operationId: ``EdgeNodeConfiguration_GetEdgeviewClientScript``
         """
-        path = f"/v1/devices/id/{id}/edgeview/clientscript"
+        path = f"/v1/devices/id/{_q(id)}/edgeview/clientscript"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -562,7 +563,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/edgeview/disable``
         operationId: ``EdgeNodeConfiguration_StopEdgeviewEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/edgeview/disable"
+        path = f"/v1/devices/id/{_q(id)}/edgeview/disable"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -575,7 +576,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/edgeview/enable``
         operationId: ``EdgeNodeConfiguration_StartEdgeviewEdgeNode``
         """
-        path = f"/v1/devices/id/{id}/edgeview/enable"
+        path = f"/v1/devices/id/{_q(id)}/edgeview/enable"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -588,7 +589,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/offboard``
         operationId: ``EdgeNodeConfiguration_Offboard``
         """
-        path = f"/v1/devices/id/{id}/offboard"
+        path = f"/v1/devices/id/{_q(id)}/offboard"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -601,7 +602,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/onboarding``
         operationId: ``EdgeNodeConfiguration_GetEdgeNodeOnboarding``
         """
-        path = f"/v1/devices/id/{id}/onboarding"
+        path = f"/v1/devices/id/{_q(id)}/onboarding"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -614,7 +615,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/preparepoweroff``
         operationId: ``EdgeNodeConfiguration_PreparePowerOff``
         """
-        path = f"/v1/devices/id/{id}/preparepoweroff"
+        path = f"/v1/devices/id/{_q(id)}/preparepoweroff"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -627,7 +628,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/publish``
         operationId: ``EdgeNodeConfiguration_UpdateEdgeNodeBaseOS2``
         """
-        path = f"/v1/devices/id/{id}/publish"
+        path = f"/v1/devices/id/{_q(id)}/publish"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -640,7 +641,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/reboot``
         operationId: ``EdgeNodeConfiguration_Reboot``
         """
-        path = f"/v1/devices/id/{id}/reboot"
+        path = f"/v1/devices/id/{_q(id)}/reboot"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -653,7 +654,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/status``
         operationId: ``EdgeNodeStatus_GetEdgeNodeStatus``
         """
-        path = f"/v1/devices/id/{id}/status"
+        path = f"/v1/devices/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -666,7 +667,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/status/edgeview``
         operationId: ``EdgeNodeStatus_GetEdgeNodeEdgeviewStatus``
         """
-        path = f"/v1/devices/id/{id}/status/edgeview"
+        path = f"/v1/devices/id/{_q(id)}/status/edgeview"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -679,7 +680,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/status/info``
         operationId: ``EdgeNodeStatus_GetEdgeNodeInfo``
         """
-        path = f"/v1/devices/id/{id}/status/info"
+        path = f"/v1/devices/id/{_q(id)}/status/info"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -692,7 +693,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/status/metrics/raw``
         operationId: ``EdgeNodeStatus_GetEdgeNodeRawStatus``
         """
-        path = f"/v1/devices/id/{id}/status/metrics/raw"
+        path = f"/v1/devices/id/{_q(id)}/status/metrics/raw"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -705,7 +706,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/suimage``
         operationId: ``EdgeNodeConfiguration_GetEdgeNodeSingleUseEVEImage``
         """
-        path = f"/v1/devices/id/{id}/suimage"
+        path = f"/v1/devices/id/{_q(id)}/suimage"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -718,7 +719,7 @@ class NodesService(BaseService):
         ``POST /v1/devices/id/{id}/suimage``
         operationId: ``EdgeNodeConfiguration_CreateEdgeNodeSingleUseEVEImage``
         """
-        path = f"/v1/devices/id/{id}/suimage"
+        path = f"/v1/devices/id/{_q(id)}/suimage"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -731,7 +732,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{id}/suimage/link``
         operationId: ``EdgeNodeConfiguration_GetEdgeNodeSingleUseEVEImageDownloadLink``
         """
-        path = f"/v1/devices/id/{id}/suimage/link"
+        path = f"/v1/devices/id/{_q(id)}/suimage/link"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -744,7 +745,7 @@ class NodesService(BaseService):
         ``PUT /v1/devices/id/{id}/unpublish``
         operationId: ``EdgeNodeConfiguration_UpdateEdgeNodeBaseOS3``
         """
-        path = f"/v1/devices/id/{id}/unpublish"
+        path = f"/v1/devices/id/{_q(id)}/unpublish"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -770,7 +771,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{objid}/events``
         operationId: ``EdgeNodeStatus_GetEdgeNodeEvents``
         """
-        path = f"/v1/devices/id/{objid}/events"
+        path = f"/v1/devices/id/{_q(objid)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -809,7 +810,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/id/{objid}/timeSeries/{mType}``
         operationId: ``EdgeNodeStatus_GetEdgeNodeResourceMetricsById``
         """
-        path = f"/v1/devices/id/{objid}/timeSeries/{m_type}"
+        path = f"/v1/devices/id/{_q(objid)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -859,7 +860,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{name}``
         operationId: ``EdgeNodeConfiguration_GetEdgeNodeByName``
         """
-        path = f"/v1/devices/name/{name}"
+        path = f"/v1/devices/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -872,7 +873,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{name}/status``
         operationId: ``EdgeNodeStatus_GetEdgeNodeStatusByName``
         """
-        path = f"/v1/devices/name/{name}/status"
+        path = f"/v1/devices/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -885,7 +886,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{name}/status/edgeview``
         operationId: ``EdgeNodeStatus_GetEdgeNodeEdgeviewStatusByName``
         """
-        path = f"/v1/devices/name/{name}/status/edgeview"
+        path = f"/v1/devices/name/{_q(name)}/status/edgeview"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -898,7 +899,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{name}/status/info``
         operationId: ``EdgeNodeStatus_GetEdgeNodeInfoByName``
         """
-        path = f"/v1/devices/name/{name}/status/info"
+        path = f"/v1/devices/name/{_q(name)}/status/info"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -911,7 +912,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{name}/status/metrics/raw``
         operationId: ``EdgeNodeStatus_GetEdgeNodeRawStatusByName``
         """
-        path = f"/v1/devices/name/{name}/status/metrics/raw"
+        path = f"/v1/devices/name/{_q(name)}/status/metrics/raw"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -937,7 +938,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{objname}/events``
         operationId: ``EdgeNodeStatus_GetEdgeNodeEventsByName``
         """
-        path = f"/v1/devices/name/{objname}/events"
+        path = f"/v1/devices/name/{_q(objname)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -976,7 +977,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/name/{objname}/timeSeries/{mType}``
         operationId: ``EdgeNodeStatus_GetEdgeNodeResourceMetricsByName``
         """
-        path = f"/v1/devices/name/{objname}/timeSeries/{m_type}"
+        path = f"/v1/devices/name/{_q(objname)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -995,7 +996,7 @@ class NodesService(BaseService):
         ``GET /v1/devices/serial/{serialno}``
         operationId: ``EdgeNodeConfiguration_GetEdgeNodeBySerial``
         """
-        path = f"/v1/devices/serial/{serialno}"
+        path = f"/v1/devices/serial/{_q(serialno)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1249,7 +1250,7 @@ class NodesService(BaseService):
         ``PUT /v1/pcrtemplate/id/{id}``
         operationId: ``HardwareModel_UpdatePCRTemplate``
         """
-        path = f"/v1/pcrtemplate/id/{id}"
+        path = f"/v1/pcrtemplate/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1262,7 +1263,7 @@ class NodesService(BaseService):
         ``GET /v1/pcrtemplates/id/{id}``
         operationId: ``HardwareModel_GetPCRTemplateById``
         """
-        path = f"/v1/pcrtemplates/id/{id}"
+        path = f"/v1/pcrtemplates/id/{_q(id)}"
         params: dict[str, Any] = {}
         if model_id is not None:
             params["modelId"] = model_id
@@ -1277,7 +1278,7 @@ class NodesService(BaseService):
         ``DELETE /v1/pcrtemplates/id/{id}``
         operationId: ``HardwareModel_DeleteEdgeNode``
         """
-        path = f"/v1/pcrtemplates/id/{id}"
+        path = f"/v1/pcrtemplates/id/{_q(id)}"
         params: dict[str, Any] = {}
         if model_id is not None:
             params["modelId"] = model_id
@@ -1354,7 +1355,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/id/{id}``
         operationId: ``ResourceGroup_GetResourceGroup``
         """
-        path = f"/v1/projects/id/{id}"
+        path = f"/v1/projects/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1367,7 +1368,7 @@ class NodesService(BaseService):
         ``DELETE /v1/projects/id/{id}``
         operationId: ``ResourceGroup_DeleteResourceGroup``
         """
-        path = f"/v1/projects/id/{id}"
+        path = f"/v1/projects/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1380,7 +1381,7 @@ class NodesService(BaseService):
         ``PUT /v1/projects/id/{id}``
         operationId: ``ResourceGroup_UpdateResourceGroup``
         """
-        path = f"/v1/projects/id/{id}"
+        path = f"/v1/projects/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1393,7 +1394,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/id/{id}/status``
         operationId: ``ResourceGroupStatus_GetResourceGroupStatusById``
         """
-        path = f"/v1/projects/id/{id}/status"
+        path = f"/v1/projects/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1419,7 +1420,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/id/{objid}/events``
         operationId: ``ResourceGroup_GetResourceGroupEvents``
         """
-        path = f"/v1/projects/id/{objid}/events"
+        path = f"/v1/projects/id/{_q(objid)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1458,7 +1459,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/id/{objid}/timeSeries/{mType}``
         operationId: ``ResourceGroup_GetResourceGroupResourceMetricsById``
         """
-        path = f"/v1/projects/id/{objid}/timeSeries/{m_type}"
+        path = f"/v1/projects/id/{_q(objid)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1477,7 +1478,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/name/{name}``
         operationId: ``ResourceGroup_GetResourceGroupByName``
         """
-        path = f"/v1/projects/name/{name}"
+        path = f"/v1/projects/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1490,7 +1491,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/name/{name}/status``
         operationId: ``ResourceGroupStatus_GetResourceGroupStatusByName``
         """
-        path = f"/v1/projects/name/{name}/status"
+        path = f"/v1/projects/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1516,7 +1517,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/name/{objname}/events``
         operationId: ``ResourceGroup_GetResourceGroupEventsByName``
         """
-        path = f"/v1/projects/name/{objname}/events"
+        path = f"/v1/projects/name/{_q(objname)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1555,7 +1556,7 @@ class NodesService(BaseService):
         ``GET /v1/projects/name/{objname}/timeSeries/{mType}``
         operationId: ``ResourceGroup_GetResourceGroupResourceMetricsByName``
         """
-        path = f"/v1/projects/name/{objname}/timeSeries/{m_type}"
+        path = f"/v1/projects/name/{_q(objname)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1826,7 +1827,7 @@ class NodesService(BaseService):
         ``GET /v1/sysmodels/global/id/{id}``
         operationId: ``HardwareModel_GetGlobalHardwareModel``
         """
-        path = f"/v1/sysmodels/global/id/{id}"
+        path = f"/v1/sysmodels/global/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1839,7 +1840,7 @@ class NodesService(BaseService):
         ``GET /v1/sysmodels/global/name/{name}``
         operationId: ``HardwareModel_GetGlobalHardwareModelByName``
         """
-        path = f"/v1/sysmodels/global/name/{name}"
+        path = f"/v1/sysmodels/global/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1852,7 +1853,7 @@ class NodesService(BaseService):
         ``GET /v1/sysmodels/id/{id}``
         operationId: ``HardwareModel_GetHardwareModel``
         """
-        path = f"/v1/sysmodels/id/{id}"
+        path = f"/v1/sysmodels/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1865,7 +1866,7 @@ class NodesService(BaseService):
         ``DELETE /v1/sysmodels/id/{id}``
         operationId: ``HardwareModel_DeleteHardwareModel``
         """
-        path = f"/v1/sysmodels/id/{id}"
+        path = f"/v1/sysmodels/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1878,7 +1879,7 @@ class NodesService(BaseService):
         ``PUT /v1/sysmodels/id/{id}``
         operationId: ``HardwareModel_UpdateHardwareModel``
         """
-        path = f"/v1/sysmodels/id/{id}"
+        path = f"/v1/sysmodels/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1891,7 +1892,7 @@ class NodesService(BaseService):
         ``PUT /v1/sysmodels/id/{id}/import``
         operationId: ``HardwareModel_ImportHardwareModel``
         """
-        path = f"/v1/sysmodels/id/{id}/import"
+        path = f"/v1/sysmodels/id/{_q(id)}/import"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1912,7 +1913,7 @@ class NodesService(BaseService):
         ``GET /v1/sysmodels/id/{id}/pcrtemplates``
         operationId: ``HardwareModel_GetPCRTemplates``
         """
-        path = f"/v1/sysmodels/id/{id}/pcrtemplates"
+        path = f"/v1/sysmodels/id/{_q(id)}/pcrtemplates"
         params: dict[str, Any] = {}
         if name is not None:
             params["name"] = name
@@ -1933,7 +1934,7 @@ class NodesService(BaseService):
         ``POST /v1/sysmodels/id/{id}/pcrtemplates``
         operationId: ``HardwareModel_CreatePCRTemplates``
         """
-        path = f"/v1/sysmodels/id/{id}/pcrtemplates"
+        path = f"/v1/sysmodels/id/{_q(id)}/pcrtemplates"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1946,7 +1947,7 @@ class NodesService(BaseService):
         ``GET /v1/sysmodels/id/{modelId}/pcrtemplates/name/{name}``
         operationId: ``HardwareModel_GetPCRTemplateByName``
         """
-        path = f"/v1/sysmodels/id/{model_id}/pcrtemplates/name/{name}"
+        path = f"/v1/sysmodels/id/{_q(model_id)}/pcrtemplates/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1959,7 +1960,7 @@ class NodesService(BaseService):
         ``GET /v1/sysmodels/name/{name}``
         operationId: ``HardwareModel_GetHardwareModelByName``
         """
-        path = f"/v1/sysmodels/name/{name}"
+        path = f"/v1/sysmodels/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1985,7 +1986,7 @@ class NodesService(BaseService):
         ``GET /v2/projects/id/{projectId}/deployments``
         operationId: ``ResourceGroup_GetDeploymentListbyIdv2``
         """
-        path = f"/v2/projects/id/{project_id}/deployments"
+        path = f"/v2/projects/id/{_q(project_id)}/deployments"
         params: dict[str, Any] = {}
         if title_pattern is not None:
             params["titlePattern"] = title_pattern
@@ -2000,7 +2001,7 @@ class NodesService(BaseService):
         ``DELETE /v2/projects/id/{projectId}/deployments``
         operationId: ``ResourceGroup_DeleteResourceGroupAllV2``
         """
-        path = f"/v2/projects/id/{project_id}/deployments"
+        path = f"/v2/projects/id/{_q(project_id)}/deployments"
         params: dict[str, Any] = {}
         if title_pattern is not None:
             params["titlePattern"] = title_pattern
@@ -2015,7 +2016,7 @@ class NodesService(BaseService):
         ``POST /v2/projects/id/{projectId}/deployments``
         operationId: ``ResourceGroup_CreateDeployment``
         """
-        path = f"/v2/projects/id/{project_id}/deployments"
+        path = f"/v2/projects/id/{_q(project_id)}/deployments"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -2028,7 +2029,7 @@ class NodesService(BaseService):
         ``GET /v2/projects/id/{projectId}/deployments/id/{id}``
         operationId: ``ResourceGroup_GetDeploymentByIdV2``
         """
-        path = f"/v2/projects/id/{project_id}/deployments/id/{id}"
+        path = f"/v2/projects/id/{_q(project_id)}/deployments/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -2041,7 +2042,7 @@ class NodesService(BaseService):
         ``DELETE /v2/projects/id/{projectId}/deployments/id/{id}``
         operationId: ``ResourceGroup_DeleteResourceGroupV2``
         """
-        path = f"/v2/projects/id/{project_id}/deployments/id/{id}"
+        path = f"/v2/projects/id/{_q(project_id)}/deployments/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -2054,7 +2055,7 @@ class NodesService(BaseService):
         ``PUT /v2/projects/id/{projectId}/deployments/id/{id}``
         operationId: ``ResourceGroup_UpdateResourceGroupV2``
         """
-        path = f"/v2/projects/id/{project_id}/deployments/id/{id}"
+        path = f"/v2/projects/id/{_q(project_id)}/deployments/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

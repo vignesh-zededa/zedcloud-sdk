@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.k8s import (
     ClusterGroup,
     ClusterGroupManifestOutput,
@@ -73,7 +74,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/deployments/id/{deploymentId}``
         operationId: ``KubernetesDeployments_GetDeployment``
         """
-        path = f"/v1/cluster/instances/kubernetes/deployments/id/{deployment_id}"
+        path = f"/v1/cluster/instances/kubernetes/deployments/id/{_q(deployment_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -86,7 +87,7 @@ class K8sService(BaseService):
         ``DELETE /v1/cluster/instances/kubernetes/deployments/id/{deploymentId}``
         operationId: ``KubernetesDeployments_DeleteDeployment``
         """
-        path = f"/v1/cluster/instances/kubernetes/deployments/id/{deployment_id}"
+        path = f"/v1/cluster/instances/kubernetes/deployments/id/{_q(deployment_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -104,7 +105,7 @@ class K8sService(BaseService):
         ``PUT /v1/cluster/instances/kubernetes/deployments/id/{deploymentId}``
         operationId: ``KubernetesDeployments_UpdateDeployment``
         """
-        path = f"/v1/cluster/instances/kubernetes/deployments/id/{deployment_id}"
+        path = f"/v1/cluster/instances/kubernetes/deployments/id/{_q(deployment_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -143,7 +144,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/gitrepos/id/{gitrepoId}``
         operationId: ``KubernetesGitOps_GetGitRepo``
         """
-        path = f"/v1/cluster/instances/kubernetes/gitrepos/id/{gitrepo_id}"
+        path = f"/v1/cluster/instances/kubernetes/gitrepos/id/{_q(gitrepo_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -156,7 +157,7 @@ class K8sService(BaseService):
         ``DELETE /v1/cluster/instances/kubernetes/gitrepos/id/{gitrepoId}``
         operationId: ``KubernetesGitOps_DeleteGitRepo``
         """
-        path = f"/v1/cluster/instances/kubernetes/gitrepos/id/{gitrepo_id}"
+        path = f"/v1/cluster/instances/kubernetes/gitrepos/id/{_q(gitrepo_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -169,7 +170,7 @@ class K8sService(BaseService):
         ``PUT /v1/cluster/instances/kubernetes/gitrepos/id/{gitrepoId}``
         operationId: ``KubernetesGitOps_UpdateGitRepo``
         """
-        path = f"/v1/cluster/instances/kubernetes/gitrepos/id/{gitrepo_id}"
+        path = f"/v1/cluster/instances/kubernetes/gitrepos/id/{_q(gitrepo_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -208,7 +209,7 @@ class K8sService(BaseService):
         ``DELETE /v1/cluster/instances/kubernetes/helm/charts/name/{chartName}``
         operationId: ``HelmChartManagement_DeleteHelmChart``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/charts/name/{chart_name}"
+        path = f"/v1/cluster/instances/kubernetes/helm/charts/name/{_q(chart_name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -227,7 +228,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/helm/charts/name/{chartName}/version/{chartVersion}``
         operationId: ``HelmChartManagement_GetHelmChart``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/charts/name/{chart_name}/version/{chart_version}"
+        path = f"/v1/cluster/instances/kubernetes/helm/charts/name/{_q(chart_name)}/version/{_q(chart_version)}"
         params: dict[str, Any] = {}
         if repo_identifier is not None:
             params["repoIdentifier"] = repo_identifier
@@ -242,7 +243,7 @@ class K8sService(BaseService):
         ``PUT /v1/cluster/instances/kubernetes/helm/charts/name/{chartName}/version/{chartVersion}``
         operationId: ``HelmChartManagement_UpdateHelmChart``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/charts/name/{chart_name}/version/{chart_version}"
+        path = f"/v1/cluster/instances/kubernetes/helm/charts/name/{_q(chart_name)}/version/{_q(chart_version)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -281,7 +282,7 @@ class K8sService(BaseService):
         ``PUT /v1/cluster/instances/kubernetes/helm/repository/id/{id}``
         operationId: ``PrivateHelmRepositories_UpdatePrivateRepo``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{id}"
+        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -294,7 +295,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/helm/repository/id/{privateRepoId}``
         operationId: ``PrivateHelmRepositories_GetPrivateRepo``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{private_repo_id}"
+        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{_q(private_repo_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -307,7 +308,7 @@ class K8sService(BaseService):
         ``DELETE /v1/cluster/instances/kubernetes/helm/repository/id/{privateRepoId}``
         operationId: ``PrivateHelmRepositories_DeletePrivateRepo``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{private_repo_id}"
+        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{_q(private_repo_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -320,7 +321,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/helm/repository/id/{privateRepoId}/charts``
         operationId: ``PrivateHelmRepositories_GetPrivateRepoCharts``
         """
-        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{private_repo_id}/charts"
+        path = f"/v1/cluster/instances/kubernetes/helm/repository/id/{_q(private_repo_id)}/charts"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -359,7 +360,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/secrets/id/{secretId}``
         operationId: ``KubernetesSecrets_GetSecret``
         """
-        path = f"/v1/cluster/instances/kubernetes/secrets/id/{secret_id}"
+        path = f"/v1/cluster/instances/kubernetes/secrets/id/{_q(secret_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -372,7 +373,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/snapshots/operations/{operationId}``
         operationId: ``KubernetesSnapshots_GetSnapshotOperation``
         """
-        path = f"/v1/cluster/instances/kubernetes/snapshots/operations/{operation_id}"
+        path = f"/v1/cluster/instances/kubernetes/snapshots/operations/{_q(operation_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -385,7 +386,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/snapshots/{clusterId}``
         operationId: ``KubernetesSnapshots_ListSnapshots``
         """
-        path = f"/v1/cluster/instances/kubernetes/snapshots/{cluster_id}"
+        path = f"/v1/cluster/instances/kubernetes/snapshots/{_q(cluster_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -398,7 +399,7 @@ class K8sService(BaseService):
         ``POST /v1/cluster/instances/kubernetes/snapshots/{clusterId}/create``
         operationId: ``KubernetesSnapshots_CreateSnapshot``
         """
-        path = f"/v1/cluster/instances/kubernetes/snapshots/{cluster_id}/create"
+        path = f"/v1/cluster/instances/kubernetes/snapshots/{_q(cluster_id)}/create"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -411,7 +412,7 @@ class K8sService(BaseService):
         ``DELETE /v1/cluster/instances/kubernetes/snapshots/{clusterId}/{name}``
         operationId: ``KubernetesSnapshots_DeleteSnapshot``
         """
-        path = f"/v1/cluster/instances/kubernetes/snapshots/{cluster_id}/{name}"
+        path = f"/v1/cluster/instances/kubernetes/snapshots/{_q(cluster_id)}/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -430,7 +431,7 @@ class K8sService(BaseService):
         ``POST /v1/cluster/instances/kubernetes/snapshots/{clusterId}/{name}/restore``
         operationId: ``KubernetesSnapshots_RestoreSnapshot``
         """
-        path = f"/v1/cluster/instances/kubernetes/snapshots/{cluster_id}/{name}/restore"
+        path = f"/v1/cluster/instances/kubernetes/snapshots/{_q(cluster_id)}/{_q(name)}/restore"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -443,7 +444,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/{clusterId}/cluster-shell``
         operationId: ``KubernetesDashboard_ClusterShell``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/cluster-shell"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/cluster-shell"
         params: dict[str, Any] = {}
         if command is not None:
             params["command"] = command
@@ -458,7 +459,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/{clusterId}/kubeconfig``
         operationId: ``KubernetesDashboard_GetDashboardKubeconfig``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/kubeconfig"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/kubeconfig"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -471,7 +472,7 @@ class K8sService(BaseService):
         ``GET /v1/cluster/instances/kubernetes/{clusterId}/proxy/{path}``
         operationId: ``KubernetesDashboard_ProxyKubernetesRequest``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/proxy/{path}"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/proxy/{_q(path)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -484,7 +485,7 @@ class K8sService(BaseService):
         ``DELETE /v1/cluster/instances/kubernetes/{clusterId}/proxy/{path}``
         operationId: ``KubernetesDashboard_ProxyKubernetesRequest5``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/proxy/{path}"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/proxy/{_q(path)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -497,7 +498,7 @@ class K8sService(BaseService):
         ``POST /v1/cluster/instances/kubernetes/{clusterId}/proxy/{path}``
         operationId: ``KubernetesDashboard_ProxyKubernetesRequest2``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/proxy/{path}"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/proxy/{_q(path)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -510,7 +511,7 @@ class K8sService(BaseService):
         ``PUT /v1/cluster/instances/kubernetes/{clusterId}/proxy/{path}``
         operationId: ``KubernetesDashboard_ProxyKubernetesRequest3``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/proxy/{path}"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/proxy/{_q(path)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -523,7 +524,7 @@ class K8sService(BaseService):
         ``PATCH /v1/cluster/instances/kubernetes/{clusterId}/proxy/{path}``
         operationId: ``KubernetesDashboard_ProxyKubernetesRequest4``
         """
-        path = f"/v1/cluster/instances/kubernetes/{cluster_id}/proxy/{path}"
+        path = f"/v1/cluster/instances/kubernetes/{_q(cluster_id)}/proxy/{_q(path)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -549,7 +550,7 @@ class K8sService(BaseService):
         ``DELETE /v1/zks/cluster/groups/id/{clusterGroupId}``
         operationId: ``ClusterGroups_DeleteClusterGroup``
         """
-        path = f"/v1/zks/cluster/groups/id/{cluster_group_id}"
+        path = f"/v1/zks/cluster/groups/id/{_q(cluster_group_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -562,7 +563,7 @@ class K8sService(BaseService):
         ``PUT /v1/zks/cluster/groups/id/{id}``
         operationId: ``ClusterGroups_UpdateClusterGroup``
         """
-        path = f"/v1/zks/cluster/groups/id/{id}"
+        path = f"/v1/zks/cluster/groups/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -640,7 +641,7 @@ class K8sService(BaseService):
         ``PUT /v1/zks/instances/id/{id}``
         operationId: ``ZKSClusterInstances_UpdateZKSInstance``
         """
-        path = f"/v1/zks/instances/id/{id}"
+        path = f"/v1/zks/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -653,7 +654,7 @@ class K8sService(BaseService):
         ``GET /v1/zks/instances/id/{zksId}``
         operationId: ``ZKSClusterInstances_GetZKSInstance``
         """
-        path = f"/v1/zks/instances/id/{zks_id}"
+        path = f"/v1/zks/instances/id/{_q(zks_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -666,7 +667,7 @@ class K8sService(BaseService):
         ``DELETE /v1/zks/instances/id/{zksId}``
         operationId: ``ZKSClusterInstances_DeleteZKSInstance``
         """
-        path = f"/v1/zks/instances/id/{zks_id}"
+        path = f"/v1/zks/instances/id/{_q(zks_id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -679,7 +680,7 @@ class K8sService(BaseService):
         ``GET /v1/zks/instances/id/{zksId}/metrics``
         operationId: ``ZKSClusterInstances_GetZKSInstanceMetrics``
         """
-        path = f"/v1/zks/instances/id/{zks_id}/metrics"
+        path = f"/v1/zks/instances/id/{_q(zks_id)}/metrics"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -692,7 +693,7 @@ class K8sService(BaseService):
         ``PUT /v1/zks/instances/id/{zksId}/nodes``
         operationId: ``ZKSClusterInstances_UpdateZKSInstanceNodes``
         """
-        path = f"/v1/zks/instances/id/{zks_id}/nodes"
+        path = f"/v1/zks/instances/id/{_q(zks_id)}/nodes"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -705,7 +706,7 @@ class K8sService(BaseService):
         ``GET /v1/zks/instances/id/{zksId}/registration-commands``
         operationId: ``ZKSClusterInstances_GetZKSInstanceRegistrationCommands``
         """
-        path = f"/v1/zks/instances/id/{zks_id}/registration-commands"
+        path = f"/v1/zks/instances/id/{_q(zks_id)}/registration-commands"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -718,7 +719,7 @@ class K8sService(BaseService):
         ``PUT /v1/zks/instances/id/{zksId}/upgrade``
         operationId: ``ZKSClusterInstances_UpgradeZKSInstance``
         """
-        path = f"/v1/zks/instances/id/{zks_id}/upgrade"
+        path = f"/v1/zks/instances/id/{_q(zks_id)}/upgrade"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -770,7 +771,7 @@ class K8sService(BaseService):
         ``GET /v1/zks/instances/name/{zksName}``
         operationId: ``ZKSClusterInstances_GetZKSInstanceByName``
         """
-        path = f"/v1/zks/instances/name/{zks_name}"
+        path = f"/v1/zks/instances/name/{_q(zks_name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -783,7 +784,7 @@ class K8sService(BaseService):
         ``GET /v1/zks/instances/name/{zksName}/metrics``
         operationId: ``ZKSClusterInstances_GetZKSInstanceMetricsByName``
         """
-        path = f"/v1/zks/instances/name/{zks_name}/metrics"
+        path = f"/v1/zks/instances/name/{_q(zks_name)}/metrics"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -796,7 +797,7 @@ class K8sService(BaseService):
         ``GET /v1/zks/instances/name/{zksName}/registration-commands``
         operationId: ``ZKSClusterInstances_GetZKSInstanceRegistrationCommandsByName``
         """
-        path = f"/v1/zks/instances/name/{zks_name}/registration-commands"
+        path = f"/v1/zks/instances/name/{_q(zks_name)}/registration-commands"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:

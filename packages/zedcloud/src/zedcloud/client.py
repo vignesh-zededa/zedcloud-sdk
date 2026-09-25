@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from types import TracebackType
-from typing import Self
 
 import httpx
 
@@ -122,7 +121,7 @@ class ZedcloudClient:
         if self._owns_http_client:
             self._http_client.close()
 
-    def __enter__(self) -> Self:
+    def __enter__(self) -> ZedcloudClient:
         return self
 
     def __exit__(

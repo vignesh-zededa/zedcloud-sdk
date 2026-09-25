@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.apps import (
     App,
     AppHttpRequest,
@@ -232,7 +233,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/global/id/{id}``
         operationId: ``EdgeApplicationConfiguration_GetGlobalEdgeApplicationBundle``
         """
-        path = f"/v1/apps/global/id/{id}"
+        path = f"/v1/apps/global/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -245,7 +246,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/global/name/{name}``
         operationId: ``EdgeApplicationConfiguration_GetGlobalEdgeApplicationBundleByName``
         """
-        path = f"/v1/apps/global/name/{name}"
+        path = f"/v1/apps/global/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -258,7 +259,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/id/{id}``
         operationId: ``EdgeApplicationConfiguration_GetEdgeApplicationBundle``
         """
-        path = f"/v1/apps/id/{id}"
+        path = f"/v1/apps/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -271,7 +272,7 @@ class AppsService(BaseService):
         ``DELETE /v1/apps/id/{id}``
         operationId: ``EdgeApplicationConfiguration_DeleteEdgeApplicationBundle``
         """
-        path = f"/v1/apps/id/{id}"
+        path = f"/v1/apps/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -284,7 +285,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/id/{id}``
         operationId: ``EdgeApplicationConfiguration_UpdateEdgeApplicationBundle``
         """
-        path = f"/v1/apps/id/{id}"
+        path = f"/v1/apps/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -306,7 +307,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/id/{id}/projects``
         operationId: ``EdgeApplicationConfiguration_QueryEdgeApplicationBundleProjectList``
         """
-        path = f"/v1/apps/id/{id}/projects"
+        path = f"/v1/apps/id/{_q(id)}/projects"
         params: dict[str, Any] = {}
         if next_page_token is not None:
             params["next.pageToken"] = next_page_token
@@ -406,7 +407,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{appInstanceId}/snapshot/name/{name}``
         operationId: ``EdgeApplicationInstanceStatus_GetAppInstanceSnapshot``
         """
-        path = f"/v1/apps/instances/id/{app_instance_id}/snapshot/name/{name}"
+        path = f"/v1/apps/instances/id/{_q(app_instance_id)}/snapshot/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -419,7 +420,7 @@ class AppsService(BaseService):
         ``DELETE /v1/apps/instances/id/{appInstanceId}/snapshot/name/{name}``
         operationId: ``EdgeApplicationInstanceStatus_DeleteAppInstanceSnapshot``
         """
-        path = f"/v1/apps/instances/id/{app_instance_id}/snapshot/name/{name}"
+        path = f"/v1/apps/instances/id/{_q(app_instance_id)}/snapshot/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -432,7 +433,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}``
         operationId: ``EdgeApplicationInstanceConfiguration_GetEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}"
+        path = f"/v1/apps/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -445,7 +446,7 @@ class AppsService(BaseService):
         ``DELETE /v1/apps/instances/id/{id}``
         operationId: ``EdgeApplicationInstanceConfiguration_DeleteEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}"
+        path = f"/v1/apps/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -463,7 +464,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}``
         operationId: ``EdgeApplicationInstanceConfiguration_UpdateEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}"
+        path = f"/v1/apps/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -476,7 +477,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}/activate``
         operationId: ``EdgeApplicationInstanceConfiguration_ActivateEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}/activate"
+        path = f"/v1/apps/instances/id/{_q(id)}/activate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -489,7 +490,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}/console/remote``
         operationId: ``EdgeApplicationInstanceConfiguration_ConnectToEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}/console/remote"
+        path = f"/v1/apps/instances/id/{_q(id)}/console/remote"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -502,7 +503,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}/deactivate``
         operationId: ``EdgeApplicationInstanceConfiguration_DeActivateEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}/deactivate"
+        path = f"/v1/apps/instances/id/{_q(id)}/deactivate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -532,7 +533,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}/flowlog/classification``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTrafficFlows``
         """
-        path = f"/v1/apps/instances/id/{id}/flowlog/classification"
+        path = f"/v1/apps/instances/id/{_q(id)}/flowlog/classification"
         params: dict[str, Any] = {}
         if name is not None:
             params["name"] = name
@@ -585,7 +586,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}/flowlog/toptalkers``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTopTalkers``
         """
-        path = f"/v1/apps/instances/id/{id}/flowlog/toptalkers"
+        path = f"/v1/apps/instances/id/{_q(id)}/flowlog/toptalkers"
         params: dict[str, Any] = {}
         if name is not None:
             params["name"] = name
@@ -630,7 +631,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}/logs``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceLogs``
         """
-        path = f"/v1/apps/instances/id/{id}/logs"
+        path = f"/v1/apps/instances/id/{_q(id)}/logs"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -659,7 +660,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}/opaque-status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceOpaqueStatusById``
         """
-        path = f"/v1/apps/instances/id/{id}/opaque-status"
+        path = f"/v1/apps/instances/id/{_q(id)}/opaque-status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -672,7 +673,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}/refresh``
         operationId: ``EdgeApplicationInstanceConfiguration_RefreshEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}/refresh"
+        path = f"/v1/apps/instances/id/{_q(id)}/refresh"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -685,7 +686,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}/refresh/purge``
         operationId: ``EdgeApplicationInstanceConfiguration_RefreshPurgeEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}/refresh/purge"
+        path = f"/v1/apps/instances/id/{_q(id)}/refresh/purge"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -698,7 +699,7 @@ class AppsService(BaseService):
         ``PUT /v1/apps/instances/id/{id}/restart``
         operationId: ``EdgeApplicationInstanceConfiguration_RestartEdgeApplicationInstance``
         """
-        path = f"/v1/apps/instances/id/{id}/restart"
+        path = f"/v1/apps/instances/id/{_q(id)}/restart"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -711,7 +712,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}/snapshots``
         operationId: ``EdgeApplicationInstanceStatus_GetAppInstanceSnapshots``
         """
-        path = f"/v1/apps/instances/id/{id}/snapshots"
+        path = f"/v1/apps/instances/id/{_q(id)}/snapshots"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -724,7 +725,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{id}/status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceStatus``
         """
-        path = f"/v1/apps/instances/id/{id}/status"
+        path = f"/v1/apps/instances/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -750,7 +751,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{objid}/events``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEvents``
         """
-        path = f"/v1/apps/instances/id/{objid}/events"
+        path = f"/v1/apps/instances/id/{_q(objid)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -789,7 +790,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/id/{objid}/timeSeries/{mType}``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceResourceMetricsById``
         """
-        path = f"/v1/apps/instances/id/{objid}/timeSeries/{m_type}"
+        path = f"/v1/apps/instances/id/{_q(objid)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -808,7 +809,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{name}``
         operationId: ``EdgeApplicationInstanceConfiguration_GetEdgeApplicationInstanceByName``
         """
-        path = f"/v1/apps/instances/name/{name}"
+        path = f"/v1/apps/instances/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -838,7 +839,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{name}/flowlog/classification``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTrafficFlows2``
         """
-        path = f"/v1/apps/instances/name/{name}/flowlog/classification"
+        path = f"/v1/apps/instances/name/{_q(name)}/flowlog/classification"
         params: dict[str, Any] = {}
         if id is not None:
             params["id"] = id
@@ -891,7 +892,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{name}/flowlog/toptalkers``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTopTalkers2``
         """
-        path = f"/v1/apps/instances/name/{name}/flowlog/toptalkers"
+        path = f"/v1/apps/instances/name/{_q(name)}/flowlog/toptalkers"
         params: dict[str, Any] = {}
         if id is not None:
             params["id"] = id
@@ -924,7 +925,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{name}/opaque-status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceOpaqueStatusByName``
         """
-        path = f"/v1/apps/instances/name/{name}/opaque-status"
+        path = f"/v1/apps/instances/name/{_q(name)}/opaque-status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -937,7 +938,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{name}/status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceStatusByName``
         """
-        path = f"/v1/apps/instances/name/{name}/status"
+        path = f"/v1/apps/instances/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -963,7 +964,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{objname}/events``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsByName``
         """
-        path = f"/v1/apps/instances/name/{objname}/events"
+        path = f"/v1/apps/instances/name/{_q(objname)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1002,7 +1003,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/name/{objname}/timeSeries/{mType}``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceResourceMetricsByName``
         """
-        path = f"/v1/apps/instances/name/{objname}/timeSeries/{m_type}"
+        path = f"/v1/apps/instances/name/{_q(objname)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1034,7 +1035,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/snapshot/id/{id}``
         operationId: ``EdgeApplicationInstanceStatus_GetAppInstanceSnapshotByID``
         """
-        path = f"/v1/apps/instances/snapshot/id/{id}"
+        path = f"/v1/apps/instances/snapshot/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1047,7 +1048,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/instances/snapshot/id/{id}/state``
         operationId: ``EdgeApplicationInstanceStatus_GetAppInstanceSnapshotState``
         """
-        path = f"/v1/apps/instances/snapshot/id/{id}/state"
+        path = f"/v1/apps/instances/snapshot/id/{_q(id)}/state"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1243,7 +1244,7 @@ class AppsService(BaseService):
         ``GET /v1/apps/name/{name}``
         operationId: ``EdgeApplicationConfiguration_GetEdgeApplicationBundleByName``
         """
-        path = f"/v1/apps/name/{name}"
+        path = f"/v1/apps/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1309,7 +1310,7 @@ class AppsService(BaseService):
         ``GET /v1/patch-envelope/id/{id}``
         operationId: ``PatchEnvelopeConfiguration_GetPatchEnvelopeById``
         """
-        path = f"/v1/patch-envelope/id/{id}"
+        path = f"/v1/patch-envelope/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1322,7 +1323,7 @@ class AppsService(BaseService):
         ``DELETE /v1/patch-envelope/id/{id}``
         operationId: ``PatchEnvelopeConfiguration_DeleteAppInstanceSnapshot``
         """
-        path = f"/v1/patch-envelope/id/{id}"
+        path = f"/v1/patch-envelope/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1335,7 +1336,7 @@ class AppsService(BaseService):
         ``PUT /v1/patch-envelope/id/{id}``
         operationId: ``PatchEnvelopeConfiguration_UpdatePatchEnvelope``
         """
-        path = f"/v1/patch-envelope/id/{id}"
+        path = f"/v1/patch-envelope/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1348,7 +1349,7 @@ class AppsService(BaseService):
         ``GET /v1/patch-envelope/name/{name}``
         operationId: ``PatchEnvelopeConfiguration_GetPatchEnvelopeByName``
         """
-        path = f"/v1/patch-envelope/name/{name}"
+        path = f"/v1/patch-envelope/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1478,7 +1479,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{id}``
         operationId: ``EdgeApplicationInstanceConfiguration_GetEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}"
+        path = f"/v2/apps/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1491,7 +1492,7 @@ class AppsService(BaseService):
         ``DELETE /v2/apps/instances/id/{id}``
         operationId: ``EdgeApplicationInstanceConfiguration_DeleteEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}"
+        path = f"/v2/apps/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1504,7 +1505,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}``
         operationId: ``EdgeApplicationInstanceConfiguration_UpdateEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}"
+        path = f"/v2/apps/instances/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1517,7 +1518,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}/activate``
         operationId: ``EdgeApplicationInstanceConfiguration_ActivateEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}/activate"
+        path = f"/v2/apps/instances/id/{_q(id)}/activate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1530,7 +1531,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}/console/remote``
         operationId: ``EdgeApplicationInstanceConfiguration_ConnectToEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}/console/remote"
+        path = f"/v2/apps/instances/id/{_q(id)}/console/remote"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1543,7 +1544,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}/deactivate``
         operationId: ``EdgeApplicationInstanceConfiguration_DeActivateEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}/deactivate"
+        path = f"/v2/apps/instances/id/{_q(id)}/deactivate"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1573,7 +1574,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{id}/flowlog/classification``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTrafficFlowsV2``
         """
-        path = f"/v2/apps/instances/id/{id}/flowlog/classification"
+        path = f"/v2/apps/instances/id/{_q(id)}/flowlog/classification"
         params: dict[str, Any] = {}
         if name is not None:
             params["name"] = name
@@ -1626,7 +1627,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{id}/flowlog/toptalkers``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTopTalkersV2``
         """
-        path = f"/v2/apps/instances/id/{id}/flowlog/toptalkers"
+        path = f"/v2/apps/instances/id/{_q(id)}/flowlog/toptalkers"
         params: dict[str, Any] = {}
         if name is not None:
             params["name"] = name
@@ -1671,7 +1672,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{id}/logs``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceLogsV2``
         """
-        path = f"/v2/apps/instances/id/{id}/logs"
+        path = f"/v2/apps/instances/id/{_q(id)}/logs"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1700,7 +1701,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{id}/opaque-status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceOpaqueStatusByIdV2``
         """
-        path = f"/v2/apps/instances/id/{id}/opaque-status"
+        path = f"/v2/apps/instances/id/{_q(id)}/opaque-status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1713,7 +1714,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}/refresh``
         operationId: ``EdgeApplicationInstanceConfiguration_RefreshEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}/refresh"
+        path = f"/v2/apps/instances/id/{_q(id)}/refresh"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1726,7 +1727,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}/refresh/purge``
         operationId: ``EdgeApplicationInstanceConfiguration_RefreshPurgeEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}/refresh/purge"
+        path = f"/v2/apps/instances/id/{_q(id)}/refresh/purge"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1739,7 +1740,7 @@ class AppsService(BaseService):
         ``PUT /v2/apps/instances/id/{id}/restart``
         operationId: ``EdgeApplicationInstanceConfiguration_RestartEdgeApplicationInstanceV2``
         """
-        path = f"/v2/apps/instances/id/{id}/restart"
+        path = f"/v2/apps/instances/id/{_q(id)}/restart"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1752,7 +1753,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{id}/status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceStatusV2``
         """
-        path = f"/v2/apps/instances/id/{id}/status"
+        path = f"/v2/apps/instances/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1778,7 +1779,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{objid}/events``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsV2``
         """
-        path = f"/v2/apps/instances/id/{objid}/events"
+        path = f"/v2/apps/instances/id/{_q(objid)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1817,7 +1818,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/id/{objid}/timeSeries/{mType}``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceResourceMetricsByIdV2``
         """
-        path = f"/v2/apps/instances/id/{objid}/timeSeries/{m_type}"
+        path = f"/v2/apps/instances/id/{_q(objid)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -1836,7 +1837,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{name}``
         operationId: ``EdgeApplicationInstanceConfiguration_GetEdgeApplicationInstanceByNameV2``
         """
-        path = f"/v2/apps/instances/name/{name}"
+        path = f"/v2/apps/instances/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1866,7 +1867,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{name}/flowlog/classification``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTrafficFlowsV22``
         """
-        path = f"/v2/apps/instances/name/{name}/flowlog/classification"
+        path = f"/v2/apps/instances/name/{_q(name)}/flowlog/classification"
         params: dict[str, Any] = {}
         if id is not None:
             params["id"] = id
@@ -1919,7 +1920,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{name}/flowlog/toptalkers``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTopTalkersV22``
         """
-        path = f"/v2/apps/instances/name/{name}/flowlog/toptalkers"
+        path = f"/v2/apps/instances/name/{_q(name)}/flowlog/toptalkers"
         params: dict[str, Any] = {}
         if id is not None:
             params["id"] = id
@@ -1952,7 +1953,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{name}/opaque-status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceOpaqueStatusByNameV2``
         """
-        path = f"/v2/apps/instances/name/{name}/opaque-status"
+        path = f"/v2/apps/instances/name/{_q(name)}/opaque-status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1965,7 +1966,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{name}/status``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceStatusByNameV2``
         """
-        path = f"/v2/apps/instances/name/{name}/status"
+        path = f"/v2/apps/instances/name/{_q(name)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -1991,7 +1992,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{objname}/events``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsByNameV2``
         """
-        path = f"/v2/apps/instances/name/{objname}/events"
+        path = f"/v2/apps/instances/name/{_q(objname)}/events"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time
@@ -2030,7 +2031,7 @@ class AppsService(BaseService):
         ``GET /v2/apps/instances/name/{objname}/timeSeries/{mType}``
         operationId: ``EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceResourceMetricsByNameV2``
         """
-        path = f"/v2/apps/instances/name/{objname}/timeSeries/{m_type}"
+        path = f"/v2/apps/instances/name/{_q(objname)}/timeSeries/{_q(m_type)}"
         params: dict[str, Any] = {}
         if start_time is not None:
             params["startTime"] = start_time

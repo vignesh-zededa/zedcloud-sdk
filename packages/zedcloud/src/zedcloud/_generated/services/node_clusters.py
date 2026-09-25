@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any
 
 from zedcloud.services.base import BaseService
+from zedcloud.services.base import quote_path_param as _q
 from zedcloud._generated.models.node_clusters import (
     BaseOSImage,
     EdgeNodeCluster,
@@ -134,7 +135,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/id/{id}``
         operationId: ``EdgeNodeClusterConfiguration_GetCluster``
         """
-        path = f"/v1/cluster/id/{id}"
+        path = f"/v1/cluster/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -147,7 +148,7 @@ class NodeClustersService(BaseService):
         ``DELETE /v1/cluster/id/{id}``
         operationId: ``EdgeNodeClusterConfiguration_DeleteCluster``
         """
-        path = f"/v1/cluster/id/{id}"
+        path = f"/v1/cluster/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -160,7 +161,7 @@ class NodeClustersService(BaseService):
         ``PUT /v1/cluster/id/{id}``
         operationId: ``EdgeNodeClusterConfiguration_UpdateCluster``
         """
-        path = f"/v1/cluster/id/{id}"
+        path = f"/v1/cluster/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -173,7 +174,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/id/{id}/ports``
         operationId: ``EdgeNodeClusterConfiguration_GetClusterPorts``
         """
-        path = f"/v1/cluster/id/{id}/ports"
+        path = f"/v1/cluster/id/{_q(id)}/ports"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -186,7 +187,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/id/{id}/raw/status``
         operationId: ``ClusterStatus_GetClusterRawStatus``
         """
-        path = f"/v1/cluster/id/{id}/raw/status"
+        path = f"/v1/cluster/id/{_q(id)}/raw/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -199,7 +200,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/id/{id}/status``
         operationId: ``ClusterStatus_GetClusterStatus``
         """
-        path = f"/v1/cluster/id/{id}/status"
+        path = f"/v1/cluster/id/{_q(id)}/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -212,7 +213,7 @@ class NodeClustersService(BaseService):
         ``PUT /v1/cluster/id/{id}/upgrade``
         operationId: ``EdgeNodeClusterConfiguration_UpgradeCluster``
         """
-        path = f"/v1/cluster/id/{id}/upgrade"
+        path = f"/v1/cluster/id/{_q(id)}/upgrade"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -225,7 +226,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/id/{id}/upgrade/status``
         operationId: ``ClusterStatus_GetClusterUpgradeStatus``
         """
-        path = f"/v1/cluster/id/{id}/upgrade/status"
+        path = f"/v1/cluster/id/{_q(id)}/upgrade/status"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -238,7 +239,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/name/{name}``
         operationId: ``EdgeNodeClusterConfiguration_GetClusterByName``
         """
-        path = f"/v1/cluster/name/{name}"
+        path = f"/v1/cluster/name/{_q(name)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
@@ -251,7 +252,7 @@ class NodeClustersService(BaseService):
         ``GET /v1/cluster/node/id/{id}``
         operationId: ``EdgeNodeClusterConfiguration_GetClusterByNodeId``
         """
-        path = f"/v1/cluster/node/id/{id}"
+        path = f"/v1/cluster/node/id/{_q(id)}"
         params: dict[str, Any] = {}
         headers: dict[str, str] = {}
         if request_id is not None:
