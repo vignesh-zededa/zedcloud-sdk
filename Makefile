@@ -1,4 +1,4 @@
-.PHONY: generate install test lint mcp-list sync
+.PHONY: generate check-generated install test lint format mcp-list sync specs
 
 UV ?= uv
 
@@ -6,7 +6,15 @@ sync:
 	$(UV) sync --all-packages --group dev
 
 generate:
-	$(UV) run python scripts/generate_from_openapi.py
+	$(UV) run python scripts/generate.py
+
+check-generated:
+	$(UV) run python scripts/generate.py --check
+
+# Refresh openapi/ from the live controller, then regenerate.
+specs:
+	$(UV) run python scripts/fetch_specs.py
+	$(UV) run python scripts/generate.py
 
 install: sync generate
 
