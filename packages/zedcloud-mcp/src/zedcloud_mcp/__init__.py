@@ -1,7 +1,6 @@
-"""Zedcloud MCP server entrypoint."""
+"""MCP server exposing ZEDEDA Zedcloud to chat assistants, built on the zedcloud SDK."""
 
-from zedcloud_mcp.server import list_tool_names, main, mcp
+from zedcloud_mcp.server import create_server, main
 
-__all__ = ["list_tool_names", "main", "mcp"]
-
-__version__ = "0.1.0"
+__all__ = ["create_server", "main"]
+__version__ = "0.2.0"

@@ -1270,7 +1270,7 @@ requires-dist = [
 
 [[package]]
 name = "zedcloud-mcp"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "packages/zedcloud-mcp" }
 dependencies = [
     { name = "mcp" },
@@ -1279,7 +1279,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "mcp", specifier = ">=1.0.0" },
+    { name = "mcp", specifier = ">=2.2.0" },
     { name = "zedcloud", editable = "packages/zedcloud" },
 ]
 

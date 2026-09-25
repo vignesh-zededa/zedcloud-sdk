@@ -35,4 +35,4 @@ jobs:
         run: uv run pytest -q -m "not needs_cloud"
 
       - name: MCP tool list
-        run: uv run python -c "from zedcloud_mcp.server import list_tool_names; print(list_tool_names())"
+        run: uv run zedcloud-mcp --list-tools

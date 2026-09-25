@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import math
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from functools import lru_cache
 from importlib import resources
@@ -201,6 +202,58 @@ def search_operations(
         scored.append((score, op))
     scored.sort(key=lambda s: (-s[0], s[1].operation_id))
     return [op for _, op in scored[:limit]]
+
+
+def prepare_call(
+    op: Operation,
+    path: Mapping[str, Any] | None,
+    query: Mapping[str, Any] | None,
+    body: Any,
+    headers: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    """Validate and normalise arguments for a registry-driven call.
+
+    Returns keyword arguments for a service's ``_request``.
+
+    Parameters may be given by wire name (``next.pageSize``) or Python name
+    (``page_size``). Unknown names are rejected rather than silently ignored.
+    """
+
+    def normalise(given: Mapping[str, Any] | None, allowed: tuple[Any, ...], kind: str) -> dict:
+        by_name = {p.name: p.name for p in allowed} | {p.python_name: p.name for p in allowed}
+        out: dict[str, Any] = {}
+        for key, value in (given or {}).items():
+            if key not in by_name:
+                names = ", ".join(p.name for p in allowed) or "none"
+                raise ValueError(
+                    f"{op.operation_id}: unknown {kind} parameter {key!r} (valid: {names})"
+                )
+            out[by_name[key]] = value
+        return out
+
+    path_values = normalise(path, op.path_params, "path")
+    missing = [p.name for p in op.path_params if p.name not in path_values]
+    if missing:
+        raise ValueError(f"{op.operation_id}: missing path parameters {missing}")
+    query_values = normalise(query, op.query_params, "query")
+    missing_q = [p.name for p in op.query_params if p.required and p.name not in query_values]
+    if missing_q:
+        raise ValueError(f"{op.operation_id}: missing required query parameters {missing_q}")
+    if body is not None and not op.has_body:
+        raise ValueError(f"{op.operation_id} does not take a request body")
+    body_model = model_for(op.body_model)
+    if body_model is not None and isinstance(body, Mapping):
+        # Accept snake_case or camelCase keys; unknown keys pass through untouched.
+        body = body_model.model_validate(dict(body))
+    return {
+        "path": path_values,
+        "multi_segment": {p.name for p in op.path_params if p.multi_segment},
+        "query": query_values,
+        "headers": normalise(headers, op.header_params, "header"),
+        "body": body,
+        "response_model": model_for(op.response_model),
+        "operation_id": op.operation_id,
+    }
 
 
 def model_for(name: str | None) -> Any:

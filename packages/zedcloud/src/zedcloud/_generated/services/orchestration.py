@@ -603,7 +603,7 @@ class OrchestrationService(BaseService):
             operation_id="ClusterInstanceStatus_GetClusterInstanceEvents",
         )
 
-    def iter_get_cluster_instance_events(
+    def iter_cluster_instance_events(
         self,
         objid: str,
         *,
@@ -793,7 +793,7 @@ class OrchestrationService(BaseService):
             operation_id="ClusterInstanceStatus_GetClusterInstanceEventsByName",
         )
 
-    def iter_get_cluster_instance_events_by_name(
+    def iter_cluster_instance_events_by_name(
         self,
         objname: str,
         *,
@@ -2042,7 +2042,7 @@ class AsyncOrchestrationService(AsyncBaseService):
             operation_id="ClusterInstanceStatus_GetClusterInstanceEvents",
         )
 
-    def iter_get_cluster_instance_events(
+    def iter_cluster_instance_events(
         self,
         objid: str,
         *,
@@ -2232,7 +2232,7 @@ class AsyncOrchestrationService(AsyncBaseService):
             operation_id="ClusterInstanceStatus_GetClusterInstanceEventsByName",
         )
 
-    def iter_get_cluster_instance_events_by_name(
+    def iter_cluster_instance_events_by_name(
         self,
         objname: str,
         *,

@@ -1550,7 +1550,7 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEvents",
         )
 
-    def iter_get_edge_application_instance_events(
+    def iter_edge_application_instance_events(
         self,
         objid: str,
         *,
@@ -1858,7 +1858,7 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsByName",
         )
 
-    def iter_get_edge_application_instance_events_by_name(
+    def iter_edge_application_instance_events_by_name(
         self,
         objname: str,
         *,
@@ -2444,7 +2444,7 @@ class AppsService(BaseService):
             operation_id="PatchEnvelopeConfiguration_GetPatchEnvelope",
         )
 
-    def iter_get_patch_envelope(
+    def iter_patch_envelope(
         self,
         *,
         project_name_pattern: str | None = None,
@@ -2654,7 +2654,7 @@ class AppsService(BaseService):
             operation_id="PatchEnvelopeConfiguration_GetPatchEnvelopeStatus",
         )
 
-    def iter_get_patch_envelope_status(
+    def iter_patch_envelope_status(
         self,
         *,
         summary: bool | None = None,
@@ -3339,7 +3339,7 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsV2",
         )
 
-    def iter_get_edge_application_instance_events_v2(
+    def iter_edge_application_instance_events_v2(
         self,
         objid: str,
         *,
@@ -3649,7 +3649,7 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsByNameV2",
         )
 
-    def iter_get_edge_application_instance_events_by_name_v2(
+    def iter_edge_application_instance_events_by_name_v2(
         self,
         objname: str,
         *,
@@ -5588,7 +5588,7 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEvents",
         )
 
-    def iter_get_edge_application_instance_events(
+    def iter_edge_application_instance_events(
         self,
         objid: str,
         *,
@@ -5896,7 +5896,7 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsByName",
         )
 
-    def iter_get_edge_application_instance_events_by_name(
+    def iter_edge_application_instance_events_by_name(
         self,
         objname: str,
         *,
@@ -6482,7 +6482,7 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="PatchEnvelopeConfiguration_GetPatchEnvelope",
         )
 
-    def iter_get_patch_envelope(
+    def iter_patch_envelope(
         self,
         *,
         project_name_pattern: str | None = None,
@@ -6692,7 +6692,7 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="PatchEnvelopeConfiguration_GetPatchEnvelopeStatus",
         )
 
-    def iter_get_patch_envelope_status(
+    def iter_patch_envelope_status(
         self,
         *,
         summary: bool | None = None,
@@ -7377,7 +7377,7 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsV2",
         )
 
-    def iter_get_edge_application_instance_events_v2(
+    def iter_edge_application_instance_events_v2(
         self,
         objid: str,
         *,
@@ -7687,7 +7687,7 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceEventsByNameV2",
         )
 
-    def iter_get_edge_application_instance_events_by_name_v2(
+    def iter_edge_application_instance_events_by_name_v2(
         self,
         objname: str,
         *,

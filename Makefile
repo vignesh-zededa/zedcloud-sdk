@@ -30,4 +30,4 @@ format:
 	$(UV) run ruff check --fix packages scripts
 
 mcp-list:
-	$(UV) run python -c "from zedcloud_mcp.server import list_tool_names; print('\n'.join(list_tool_names()))"
+	$(UV) run zedcloud-mcp --list-tools

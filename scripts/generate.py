@@ -252,6 +252,7 @@ class Operation:
     body_model: str | None = None
     response_model: str | None = None
     item_model: str | None = None  # paginated item type
+    iter_name: str | None = None
     risk: str = "read"
     deprecated: bool = False
     lookup: tuple[str, str] | None = None  # (lookup method name, by-name method name)
@@ -405,6 +406,20 @@ class Generator:
             ref = ((items or {}).get("items") or {}).get("$ref")
             if items and items.get("type") == "array" and ref:
                 op.item_model = ref.rsplit("/", 1)[-1]
+        taken = {(op.ns, op.py) for op in self.operations}
+        for op in self.operations:
+            if not op.item_model:
+                continue
+            stem = next(
+                (op.py[len(p) :] for p in ("query_", "get_", "list_") if op.py.startswith(p)), op.py
+            )
+            name = f"iter_{stem}"
+            if (op.ns, name) in taken:
+                name = f"iter_{op.py}"
+            if (op.ns, name) in taken:
+                raise SystemExit(f"{op.ns}: iterator name {name!r} collides")
+            taken.add((op.ns, name))
+            op.iter_name = name
 
     def link_lookups(self) -> None:
         """Pair ``…/id/{id}…`` GETs with their ``…/name/{name}…`` twins.
@@ -681,7 +696,7 @@ class Generator:
 
     def _render_iterator(self, op: Operation, is_async: bool) -> list[str]:
         item = self.cls(op.item_model or "")
-        name = "iter_" + (op.py[len("query_") :] if op.py.startswith("query_") else op.py)
+        name = op.iter_name
         sig = ",\n        ".join(self._signature(op, for_iter=True))
         forwarded = [
             p

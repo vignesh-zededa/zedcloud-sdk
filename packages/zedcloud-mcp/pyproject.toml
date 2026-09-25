@@ -1,13 +1,13 @@
 [project]
 name = "zedcloud-mcp"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server exposing ZEDEDA Zedcloud operations via the zedcloud SDK"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "vignesh-zededa" }]
 dependencies = [
   "zedcloud",
-  "mcp>=1.0.0",
+  "mcp>=2.2.0",
 ]
 
 [project.scripts]

@@ -1572,7 +1572,7 @@ class NodesService(BaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeEvents",
         )
 
-    def iter_get_edge_node_events(
+    def iter_edge_node_events(
         self,
         objid: str,
         *,
@@ -1835,7 +1835,7 @@ class NodesService(BaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeEventsByName",
         )
 
-    def iter_get_edge_node_events_by_name(
+    def iter_edge_node_events_by_name(
         self,
         objname: str,
         *,
@@ -2152,7 +2152,7 @@ class NodesService(BaseService):
             operation_id="HardwareModel_GetDeviceStatusConfig",
         )
 
-    def iter_get_device_status_config(
+    def iter_device_status_config(
         self,
         *,
         summary: bool | None = None,
@@ -2715,7 +2715,7 @@ class NodesService(BaseService):
             operation_id="ResourceGroup_GetResourceGroupEvents",
         )
 
-    def iter_get_resource_group_events(
+    def iter_resource_group_events(
         self,
         objid: str,
         *,
@@ -2886,7 +2886,7 @@ class NodesService(BaseService):
             operation_id="ResourceGroup_GetResourceGroupEventsByName",
         )
 
-    def iter_get_resource_group_events_by_name(
+    def iter_resource_group_events_by_name(
         self,
         objname: str,
         *,
@@ -5427,7 +5427,7 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeEvents",
         )
 
-    def iter_get_edge_node_events(
+    def iter_edge_node_events(
         self,
         objid: str,
         *,
@@ -5690,7 +5690,7 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeEventsByName",
         )
 
-    def iter_get_edge_node_events_by_name(
+    def iter_edge_node_events_by_name(
         self,
         objname: str,
         *,
@@ -6007,7 +6007,7 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="HardwareModel_GetDeviceStatusConfig",
         )
 
-    def iter_get_device_status_config(
+    def iter_device_status_config(
         self,
         *,
         summary: bool | None = None,
@@ -6570,7 +6570,7 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="ResourceGroup_GetResourceGroupEvents",
         )
 
-    def iter_get_resource_group_events(
+    def iter_resource_group_events(
         self,
         objid: str,
         *,
@@ -6741,7 +6741,7 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="ResourceGroup_GetResourceGroupEventsByName",
         )
 
-    def iter_get_resource_group_events_by_name(
+    def iter_resource_group_events_by_name(
         self,
         objname: str,
         *,

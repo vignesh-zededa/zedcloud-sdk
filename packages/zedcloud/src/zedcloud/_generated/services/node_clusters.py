@@ -191,7 +191,7 @@ class NodeClustersService(BaseService):
             operation_id="EdgeNodeClusterConfiguration_GetAvailableProjectsForCluster",
         )
 
-    def iter_get_available_projects_for_cluster(
+    def iter_available_projects_for_cluster(
         self,
         *,
         filter_project_name: str | None = None,
@@ -657,7 +657,7 @@ class AsyncNodeClustersService(AsyncBaseService):
             operation_id="EdgeNodeClusterConfiguration_GetAvailableProjectsForCluster",
         )
 
-    def iter_get_available_projects_for_cluster(
+    def iter_available_projects_for_cluster(
         self,
         *,
         filter_project_name: str | None = None,

@@ -1335,7 +1335,7 @@ class StorageService(BaseService):
             operation_id="VolumeInstanceStatus_GetVolumeInstanceEvents",
         )
 
-    def iter_get_volume_instance_events(
+    def iter_volume_instance_events(
         self,
         objid: str,
         *,
@@ -1466,7 +1466,7 @@ class StorageService(BaseService):
             operation_id="VolumeInstanceStatus_GetVolumeInstanceEventsByName",
         )
 
-    def iter_get_volume_instance_events_by_name(
+    def iter_volume_instance_events_by_name(
         self,
         objname: str,
         *,
@@ -3044,7 +3044,7 @@ class AsyncStorageService(AsyncBaseService):
             operation_id="VolumeInstanceStatus_GetVolumeInstanceEvents",
         )
 
-    def iter_get_volume_instance_events(
+    def iter_volume_instance_events(
         self,
         objid: str,
         *,
@@ -3175,7 +3175,7 @@ class AsyncStorageService(AsyncBaseService):
             operation_id="VolumeInstanceStatus_GetVolumeInstanceEventsByName",
         )
 
-    def iter_get_volume_instance_events_by_name(
+    def iter_volume_instance_events_by_name(
         self,
         objname: str,
         *,
