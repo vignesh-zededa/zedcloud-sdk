@@ -38,6 +38,7 @@ zedcloud-mcp = { workspace = true }
 
 [tool.pytest.ini_options]
 minversion = "8.0"
+addopts = "--import-mode=importlib"
 testpaths = [
   "packages/zedcloud/tests",
   "packages/zedcloud-automation/tests",
