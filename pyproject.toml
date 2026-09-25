@@ -1,0 +1,67 @@
+[project]
+name = "zedcloud-sdk"
+version = "0.1.0"
+description = "ZEDEDA Zedcloud Python SDK, automation framework, and MCP server"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "vignesh-zededa" }]
+dependencies = []
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+  "packages/zedcloud",
+  "packages/zedcloud-automation",
+  "packages/zedcloud-mcp",
+]
+
+[dependency-groups]
+dev = [
+  "datamodel-code-generator>=0.26.0",
+  "httpx>=0.27.0",
+  "pytest>=8.0.0",
+  "pytest-asyncio>=0.23.0",
+  "respx>=0.21.0",
+  "ruff>=0.6.0",
+  "zedcloud",
+  "zedcloud-automation",
+  "zedcloud-mcp",
+]
+
+[tool.uv.sources]
+zedcloud = { workspace = true }
+zedcloud-automation = { workspace = true }
+zedcloud-mcp = { workspace = true }
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = [
+  "packages/zedcloud/tests",
+  "packages/zedcloud-automation/tests",
+  "packages/zedcloud-mcp/tests",
+]
+markers = [
+  "smoke: read-only smoke checks against a live Zedcloud tenant",
+  "integration: integration tests that may create/modify resources",
+  "needs_cloud: requires ZEDCLOUD_BASE_URL and ZEDCLOUD_TOKEN",
+]
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["packages"]
+extend-exclude = ["packages/zedcloud/src/zedcloud/_generated"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = [
+  "E501",  # generated OpenAPI models can exceed line length
+]
+
+[tool.ruff.lint.per-file-ignores]
+"packages/zedcloud/src/zedcloud/_generated/**" = ["E", "F", "I", "UP", "B", "SIM"]
