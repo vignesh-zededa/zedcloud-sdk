@@ -254,6 +254,7 @@ class Operation:
     item_model: str | None = None  # paginated item type
     risk: str = "read"
     deprecated: bool = False
+    lookup: tuple[str, str] | None = None  # (lookup method name, by-name method name)
 
     @property
     def paginated(self) -> bool:
@@ -404,6 +405,31 @@ class Generator:
             ref = ((items or {}).get("items") or {}).get("$ref")
             if items and items.get("type") == "array" and ref:
                 op.item_model = ref.rsplit("/", 1)[-1]
+
+    def link_lookups(self) -> None:
+        """Pair ``…/id/{id}…`` GETs with their ``…/name/{name}…`` twins.
+
+        Each pair yields a ``lookup_*`` method that accepts either identifier.
+        """
+        by_key = {(op.ns, op.path): op for op in self.operations if op.method == "GET"}
+        taken = {(op.ns, op.py) for op in self.operations}
+        for op in self.operations:
+            if op.method != "GET" or "/id/{id}" not in op.path or op.path.startswith("/v2/"):
+                continue
+            if [p.name for p in op.params if p.location == "path"] != ["id"]:
+                continue
+            twin = by_key.get((op.ns, op.path.replace("/id/{id}", "/name/{name}", 1)))
+            if not twin or twin.response_model != op.response_model:
+                continue
+            if any(p.required for p in op.params if p.location == "query"):
+                continue
+            if not op.py.startswith("get_"):
+                continue
+            name = "lookup_" + op.py[len("get_") :].removesuffix("_by_id")
+            if (op.ns, name) in taken:
+                continue
+            taken.add((op.ns, name))
+            op.lookup = (name, twin.py)
 
     # -- models
 
@@ -558,6 +584,9 @@ class Generator:
                 if op.paginated:
                     out.append("")
                     out.extend(self._render_iterator(op, is_async))
+                if op.lookup:
+                    out.append("")
+                    out.extend(self._render_lookup(op, is_async))
         return "\n".join(out) + "\n"
 
     def _signature(self, op: Operation, *, for_iter: bool = False) -> list[str]:
@@ -675,6 +704,27 @@ class Generator:
         )
         return lines
 
+    def _render_lookup(self, op: Operation, is_async: bool) -> list[str]:
+        name, by_name = op.lookup or ("", "")
+        ret = self.cls(op.response_model) if op.response_model else "_t.Any"
+        kw, aw = ("async def", "await ") if is_async else ("def", "")
+        lines = [
+            f"    {kw} {name}(self, name_or_id: str, *, request_id: str | None = None) -> {ret}:",
+            *docstring(
+                [
+                    f"{op.summary or op.py}, by name or ID.",
+                    "",
+                    f"UUID-shaped values call :meth:`{op.py}` (falling back to :meth:`{by_name}`",
+                    f"if no object has that ID); anything else calls :meth:`{by_name}`.",
+                ],
+                "        ",
+            ),
+            f"        return {aw}self._lookup(",
+            f"            self.{op.py}, self.{by_name}, name_or_id, request_id=request_id",
+            "        )",
+        ]
+        return lines
+
     # -- registry
 
     def render_registry(self) -> str:
@@ -746,6 +796,7 @@ def build() -> dict[str, str]:
     gen = Generator()
     gen.load()
     gen.link_pagination()
+    gen.link_lookups()
     files: dict[str, str] = {
         "__init__.py": '"""Generated from openapi/*.swagger.json by scripts/generate.py."""\n',
         "services/__init__.py": '"""Generated service clients."""\n',

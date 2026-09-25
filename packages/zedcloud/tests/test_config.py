@@ -120,3 +120,16 @@ def test_missing_credentials(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.delenv(var, raising=False)
     with pytest.raises(ConfigError, match="no credentials"):
         resolve_config(base_url="https://x")
+
+
+def test_file_default_is_used_when_environment_is_empty(profiles_file: Path) -> None:
+    assert resolve_config().profile == "prod"
+
+
+def test_environment_beats_file_default(
+    profiles_file: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("ZEDCLOUD_BASE_URL", "https://env.example")
+    monkeypatch.setenv("ZEDCLOUD_TOKEN", "env-tok")
+    config = resolve_config()
+    assert config.profile is None and config.base_url == "https://env.example"

@@ -150,6 +150,18 @@ class IamService(BaseService):
             operation_id="IdentityAccessManagement_GetAuthProfile",
         )
 
+    def lookup_auth_profile(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get AAA profile, by name or ID.
+
+        UUID-shaped values call :meth:`get_auth_profile` (falling back to :meth:`get_auth_profile_by_name`
+        if no object has that ID); anything else calls :meth:`get_auth_profile_by_name`.
+        """
+        return self._lookup(
+            self.get_auth_profile, self.get_auth_profile_by_name, name_or_id, request_id=request_id
+        )
+
     def update_auth_profile(
         self,
         id: str,
@@ -528,6 +540,18 @@ class IamService(BaseService):
             response_model=CrudResponseRead,
             request_id=request_id,
             operation_id="IdentityAccessManagement_GetEnterprise",
+        )
+
+    def lookup_enterprise(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get enterprise, by name or ID.
+
+        UUID-shaped values call :meth:`get_enterprise` (falling back to :meth:`get_enterprise_by_name`
+        if no object has that ID); anything else calls :meth:`get_enterprise_by_name`.
+        """
+        return self._lookup(
+            self.get_enterprise, self.get_enterprise_by_name, name_or_id, request_id=request_id
         )
 
     def update_enterprise(
@@ -1008,6 +1032,16 @@ class IamService(BaseService):
             operation_id="IdentityAccessManagement_GetRealm",
         )
 
+    def lookup_realm(self, name_or_id: str, *, request_id: str | None = None) -> CrudResponseRead:
+        """Get a realm, by name or ID.
+
+        UUID-shaped values call :meth:`get_realm` (falling back to :meth:`get_realm_by_name`
+        if no object has that ID); anything else calls :meth:`get_realm_by_name`.
+        """
+        return self._lookup(
+            self.get_realm, self.get_realm_by_name, name_or_id, request_id=request_id
+        )
+
     def update_realm(
         self,
         id: str,
@@ -1335,6 +1369,14 @@ class IamService(BaseService):
             operation_id="IdentityAccessManagement_GetRole",
         )
 
+    def lookup_role(self, name_or_id: str, *, request_id: str | None = None) -> CrudResponseRead:
+        """Get IAM role, by name or ID.
+
+        UUID-shaped values call :meth:`get_role` (falling back to :meth:`get_role_by_name`
+        if no object has that ID); anything else calls :meth:`get_role_by_name`.
+        """
+        return self._lookup(self.get_role, self.get_role_by_name, name_or_id, request_id=request_id)
+
     def update_role(
         self,
         id: str,
@@ -1641,6 +1683,14 @@ class IamService(BaseService):
             operation_id="IdentityAccessManagement_GetUser",
         )
 
+    def lookup_user(self, name_or_id: str, *, request_id: str | None = None) -> CrudResponseRead:
+        """Get IAM user, by name or ID.
+
+        UUID-shaped values call :meth:`get_user` (falling back to :meth:`get_user_by_name`
+        if no object has that ID); anything else calls :meth:`get_user_by_name`.
+        """
+        return self._lookup(self.get_user, self.get_user_by_name, name_or_id, request_id=request_id)
+
     def update_user(
         self,
         id: str,
@@ -1854,6 +1904,18 @@ class AsyncIamService(AsyncBaseService):
             response_model=CrudResponseRead,
             request_id=request_id,
             operation_id="IdentityAccessManagement_GetAuthProfile",
+        )
+
+    async def lookup_auth_profile(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get AAA profile, by name or ID.
+
+        UUID-shaped values call :meth:`get_auth_profile` (falling back to :meth:`get_auth_profile_by_name`
+        if no object has that ID); anything else calls :meth:`get_auth_profile_by_name`.
+        """
+        return await self._lookup(
+            self.get_auth_profile, self.get_auth_profile_by_name, name_or_id, request_id=request_id
         )
 
     async def update_auth_profile(
@@ -2234,6 +2296,18 @@ class AsyncIamService(AsyncBaseService):
             response_model=CrudResponseRead,
             request_id=request_id,
             operation_id="IdentityAccessManagement_GetEnterprise",
+        )
+
+    async def lookup_enterprise(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get enterprise, by name or ID.
+
+        UUID-shaped values call :meth:`get_enterprise` (falling back to :meth:`get_enterprise_by_name`
+        if no object has that ID); anything else calls :meth:`get_enterprise_by_name`.
+        """
+        return await self._lookup(
+            self.get_enterprise, self.get_enterprise_by_name, name_or_id, request_id=request_id
         )
 
     async def update_enterprise(
@@ -2714,6 +2788,18 @@ class AsyncIamService(AsyncBaseService):
             operation_id="IdentityAccessManagement_GetRealm",
         )
 
+    async def lookup_realm(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get a realm, by name or ID.
+
+        UUID-shaped values call :meth:`get_realm` (falling back to :meth:`get_realm_by_name`
+        if no object has that ID); anything else calls :meth:`get_realm_by_name`.
+        """
+        return await self._lookup(
+            self.get_realm, self.get_realm_by_name, name_or_id, request_id=request_id
+        )
+
     async def update_realm(
         self,
         id: str,
@@ -3041,6 +3127,18 @@ class AsyncIamService(AsyncBaseService):
             operation_id="IdentityAccessManagement_GetRole",
         )
 
+    async def lookup_role(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get IAM role, by name or ID.
+
+        UUID-shaped values call :meth:`get_role` (falling back to :meth:`get_role_by_name`
+        if no object has that ID); anything else calls :meth:`get_role_by_name`.
+        """
+        return await self._lookup(
+            self.get_role, self.get_role_by_name, name_or_id, request_id=request_id
+        )
+
     async def update_role(
         self,
         id: str,
@@ -3345,6 +3443,18 @@ class AsyncIamService(AsyncBaseService):
             response_model=CrudResponseRead,
             request_id=request_id,
             operation_id="IdentityAccessManagement_GetUser",
+        )
+
+    async def lookup_user(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CrudResponseRead:
+        """Get IAM user, by name or ID.
+
+        UUID-shaped values call :meth:`get_user` (falling back to :meth:`get_user_by_name`
+        if no object has that ID); anything else calls :meth:`get_user_by_name`.
+        """
+        return await self._lookup(
+            self.get_user, self.get_user_by_name, name_or_id, request_id=request_id
         )
 
     async def update_user(

@@ -585,6 +585,21 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationConfiguration_GetGlobalEdgeApplicationBundle",
         )
 
+    def lookup_global_edge_application_bundle(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> App:
+        """Get global edge application bundle, by name or ID.
+
+        UUID-shaped values call :meth:`get_global_edge_application_bundle` (falling back to :meth:`get_global_edge_application_bundle_by_name`
+        if no object has that ID); anything else calls :meth:`get_global_edge_application_bundle_by_name`.
+        """
+        return self._lookup(
+            self.get_global_edge_application_bundle,
+            self.get_global_edge_application_bundle_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_global_edge_application_bundle_by_name(
         self,
         name: str,
@@ -633,6 +648,21 @@ class AppsService(BaseService):
             response_model=App,
             request_id=request_id,
             operation_id="EdgeApplicationConfiguration_GetEdgeApplicationBundle",
+        )
+
+    def lookup_edge_application_bundle(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> App:
+        """Get edge application bundle, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_bundle` (falling back to :meth:`get_edge_application_bundle_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_bundle_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_application_bundle,
+            self.get_edge_application_bundle_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def update_edge_application_bundle(
@@ -960,6 +990,21 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationInstanceConfiguration_GetEdgeApplicationInstance",
         )
 
+    def lookup_edge_application_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AppInstance:
+        """Get edge application instance, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance` (falling back to :meth:`get_edge_application_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_application_instance,
+            self.get_edge_application_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def update_edge_application_instance(
         self,
         id: str,
@@ -1140,6 +1185,21 @@ class AppsService(BaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTrafficFlows",
         )
 
+    def lookup_edge_application_instance_traffic_flows(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClassificationResponse:
+        """Get edge application instance network traffic flow log, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_traffic_flows` (falling back to :meth:`get_edge_application_instance_traffic_flows_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_traffic_flows_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_application_instance_traffic_flows,
+            self.get_edge_application_instance_traffic_flows_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_edge_application_instance_top_talkers(
         self,
         id: str,
@@ -1191,6 +1251,21 @@ class AppsService(BaseService):
             response_model=TopTalkersResponse,
             request_id=request_id,
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTopTalkers",
+        )
+
+    def lookup_edge_application_instance_top_talkers(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> TopTalkersResponse:
+        """Get edge application instance top talkers of the network traffic flows, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_top_talkers` (falling back to :meth:`get_edge_application_instance_top_talkers_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_top_talkers_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_application_instance_top_talkers,
+            self.get_edge_application_instance_top_talkers_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_edge_application_instance_logs(
@@ -1267,6 +1342,21 @@ class AppsService(BaseService):
             response_model=OpaqueAppInstanceStatus,
             request_id=request_id,
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceOpaqueStatusById",
+        )
+
+    def lookup_edge_application_instance_opaque_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> OpaqueAppInstanceStatus:
+        """Get patch envelope opaque status as base64 encoded string, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_opaque_status_by_id` (falling back to :meth:`get_edge_application_instance_opaque_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_opaque_status_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_application_instance_opaque_status_by_id,
+            self.get_edge_application_instance_opaque_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def refresh_edge_application_instance(
@@ -1393,6 +1483,21 @@ class AppsService(BaseService):
             response_model=AppInstStatusMsg,
             request_id=request_id,
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceStatus",
+        )
+
+    def lookup_edge_application_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AppInstStatusMsg:
+        """Get edge application instance status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_status` (falling back to :meth:`get_edge_application_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_status_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_application_instance_status,
+            self.get_edge_application_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_edge_application_instance_events(
@@ -2415,6 +2520,21 @@ class AppsService(BaseService):
             response_model=PatchEnvelope,
             request_id=request_id,
             operation_id="PatchEnvelopeConfiguration_GetPatchEnvelopeById",
+        )
+
+    def lookup_patch_envelope(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> PatchEnvelope:
+        """Get patch envelope by id, by name or ID.
+
+        UUID-shaped values call :meth:`get_patch_envelope_by_id` (falling back to :meth:`get_patch_envelope_by_name`
+        if no object has that ID); anything else calls :meth:`get_patch_envelope_by_name`.
+        """
+        return self._lookup(
+            self.get_patch_envelope_by_id,
+            self.get_patch_envelope_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def update_patch_envelope(
@@ -4503,6 +4623,21 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationConfiguration_GetGlobalEdgeApplicationBundle",
         )
 
+    async def lookup_global_edge_application_bundle(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> App:
+        """Get global edge application bundle, by name or ID.
+
+        UUID-shaped values call :meth:`get_global_edge_application_bundle` (falling back to :meth:`get_global_edge_application_bundle_by_name`
+        if no object has that ID); anything else calls :meth:`get_global_edge_application_bundle_by_name`.
+        """
+        return await self._lookup(
+            self.get_global_edge_application_bundle,
+            self.get_global_edge_application_bundle_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_global_edge_application_bundle_by_name(
         self,
         name: str,
@@ -4551,6 +4686,21 @@ class AsyncAppsService(AsyncBaseService):
             response_model=App,
             request_id=request_id,
             operation_id="EdgeApplicationConfiguration_GetEdgeApplicationBundle",
+        )
+
+    async def lookup_edge_application_bundle(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> App:
+        """Get edge application bundle, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_bundle` (falling back to :meth:`get_edge_application_bundle_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_bundle_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_application_bundle,
+            self.get_edge_application_bundle_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def update_edge_application_bundle(
@@ -4878,6 +5028,21 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationInstanceConfiguration_GetEdgeApplicationInstance",
         )
 
+    async def lookup_edge_application_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AppInstance:
+        """Get edge application instance, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance` (falling back to :meth:`get_edge_application_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_application_instance,
+            self.get_edge_application_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def update_edge_application_instance(
         self,
         id: str,
@@ -5058,6 +5223,21 @@ class AsyncAppsService(AsyncBaseService):
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTrafficFlows",
         )
 
+    async def lookup_edge_application_instance_traffic_flows(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClassificationResponse:
+        """Get edge application instance network traffic flow log, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_traffic_flows` (falling back to :meth:`get_edge_application_instance_traffic_flows_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_traffic_flows_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_application_instance_traffic_flows,
+            self.get_edge_application_instance_traffic_flows_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_edge_application_instance_top_talkers(
         self,
         id: str,
@@ -5109,6 +5289,21 @@ class AsyncAppsService(AsyncBaseService):
             response_model=TopTalkersResponse,
             request_id=request_id,
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceTopTalkers",
+        )
+
+    async def lookup_edge_application_instance_top_talkers(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> TopTalkersResponse:
+        """Get edge application instance top talkers of the network traffic flows, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_top_talkers` (falling back to :meth:`get_edge_application_instance_top_talkers_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_top_talkers_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_application_instance_top_talkers,
+            self.get_edge_application_instance_top_talkers_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_edge_application_instance_logs(
@@ -5185,6 +5380,21 @@ class AsyncAppsService(AsyncBaseService):
             response_model=OpaqueAppInstanceStatus,
             request_id=request_id,
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceOpaqueStatusById",
+        )
+
+    async def lookup_edge_application_instance_opaque_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> OpaqueAppInstanceStatus:
+        """Get patch envelope opaque status as base64 encoded string, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_opaque_status_by_id` (falling back to :meth:`get_edge_application_instance_opaque_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_opaque_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_application_instance_opaque_status_by_id,
+            self.get_edge_application_instance_opaque_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def refresh_edge_application_instance(
@@ -5311,6 +5521,21 @@ class AsyncAppsService(AsyncBaseService):
             response_model=AppInstStatusMsg,
             request_id=request_id,
             operation_id="EdgeApplicationInstanceStatus_GetEdgeApplicationInstanceStatus",
+        )
+
+    async def lookup_edge_application_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AppInstStatusMsg:
+        """Get edge application instance status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_application_instance_status` (falling back to :meth:`get_edge_application_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_application_instance_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_application_instance_status,
+            self.get_edge_application_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_edge_application_instance_events(
@@ -6333,6 +6558,21 @@ class AsyncAppsService(AsyncBaseService):
             response_model=PatchEnvelope,
             request_id=request_id,
             operation_id="PatchEnvelopeConfiguration_GetPatchEnvelopeById",
+        )
+
+    async def lookup_patch_envelope(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> PatchEnvelope:
+        """Get patch envelope by id, by name or ID.
+
+        UUID-shaped values call :meth:`get_patch_envelope_by_id` (falling back to :meth:`get_patch_envelope_by_name`
+        if no object has that ID); anything else calls :meth:`get_patch_envelope_by_name`.
+        """
+        return await self._lookup(
+            self.get_patch_envelope_by_id,
+            self.get_patch_envelope_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def update_patch_envelope(

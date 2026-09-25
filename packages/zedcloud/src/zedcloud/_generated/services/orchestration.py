@@ -262,6 +262,21 @@ class OrchestrationService(BaseService):
             operation_id="ClusterInstanceConfiguration_GetClusterInstance",
         )
 
+    def lookup_cluster_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClusterInstance:
+        """Get Cluster Instance., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster_instance` (falling back to :meth:`get_cluster_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_instance_by_name`.
+        """
+        return self._lookup(
+            self.get_cluster_instance,
+            self.get_cluster_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def update_cluster_instance(
         self,
         id: str,
@@ -460,6 +475,21 @@ class OrchestrationService(BaseService):
             operation_id="ClusterInstanceStatus_GetClusterInstanceStatus",
         )
 
+    def lookup_cluster_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClusterInstStatusMsg:
+        """Get Cluster Instance status., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster_instance_status` (falling back to :meth:`get_cluster_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_instance_status_by_name`.
+        """
+        return self._lookup(
+            self.get_cluster_instance_status,
+            self.get_cluster_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_cluster_instance_kubeconfig_by_id(
         self,
         id: str,
@@ -482,6 +512,21 @@ class OrchestrationService(BaseService):
             response_model=ClusterInstStatusMsg,
             request_id=request_id,
             operation_id="ClusterInstanceStatus_GetClusterInstanceKubeconfigById",
+        )
+
+    def lookup_cluster_instance_kubeconfig(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClusterInstStatusMsg:
+        """Get Cluster Instances kubeconfig by id., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster_instance_kubeconfig_by_id` (falling back to :meth:`get_cluster_instance_kubeconfig_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_instance_kubeconfig_by_name`.
+        """
+        return self._lookup(
+            self.get_cluster_instance_kubeconfig_by_id,
+            self.get_cluster_instance_kubeconfig_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def download_cluster_instance_kubeconfig_by_id(
@@ -1131,6 +1176,21 @@ class OrchestrationService(BaseService):
             operation_id="DataStreamConfigs_GetDataStreamById",
         )
 
+    def lookup_data_stream(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DataStreamConfig:
+        """Get a data stream config by Id., by name or ID.
+
+        UUID-shaped values call :meth:`get_data_stream_by_id` (falling back to :meth:`get_data_stream_by_name`
+        if no object has that ID); anything else calls :meth:`get_data_stream_by_name`.
+        """
+        return self._lookup(
+            self.get_data_stream_by_id,
+            self.get_data_stream_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def update_data_stream(
         self,
         id: str,
@@ -1323,6 +1383,16 @@ class OrchestrationService(BaseService):
             response_model=PluginConfig,
             request_id=request_id,
             operation_id="ThirdPartyPluginManagement_GetPluginById",
+        )
+
+    def lookup_plugin(self, name_or_id: str, *, request_id: str | None = None) -> PluginConfig:
+        """Get a third party plugin by Id., by name or ID.
+
+        UUID-shaped values call :meth:`get_plugin_by_id` (falling back to :meth:`get_plugin_by_name`
+        if no object has that ID); anything else calls :meth:`get_plugin_by_name`.
+        """
+        return self._lookup(
+            self.get_plugin_by_id, self.get_plugin_by_name, name_or_id, request_id=request_id
         )
 
     def update_plugin(
@@ -1631,6 +1701,21 @@ class AsyncOrchestrationService(AsyncBaseService):
             operation_id="ClusterInstanceConfiguration_GetClusterInstance",
         )
 
+    async def lookup_cluster_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClusterInstance:
+        """Get Cluster Instance., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster_instance` (falling back to :meth:`get_cluster_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_instance_by_name`.
+        """
+        return await self._lookup(
+            self.get_cluster_instance,
+            self.get_cluster_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def update_cluster_instance(
         self,
         id: str,
@@ -1829,6 +1914,21 @@ class AsyncOrchestrationService(AsyncBaseService):
             operation_id="ClusterInstanceStatus_GetClusterInstanceStatus",
         )
 
+    async def lookup_cluster_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClusterInstStatusMsg:
+        """Get Cluster Instance status., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster_instance_status` (falling back to :meth:`get_cluster_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_instance_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_cluster_instance_status,
+            self.get_cluster_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_cluster_instance_kubeconfig_by_id(
         self,
         id: str,
@@ -1851,6 +1951,21 @@ class AsyncOrchestrationService(AsyncBaseService):
             response_model=ClusterInstStatusMsg,
             request_id=request_id,
             operation_id="ClusterInstanceStatus_GetClusterInstanceKubeconfigById",
+        )
+
+    async def lookup_cluster_instance_kubeconfig(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ClusterInstStatusMsg:
+        """Get Cluster Instances kubeconfig by id., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster_instance_kubeconfig_by_id` (falling back to :meth:`get_cluster_instance_kubeconfig_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_instance_kubeconfig_by_name`.
+        """
+        return await self._lookup(
+            self.get_cluster_instance_kubeconfig_by_id,
+            self.get_cluster_instance_kubeconfig_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def download_cluster_instance_kubeconfig_by_id(
@@ -2500,6 +2615,21 @@ class AsyncOrchestrationService(AsyncBaseService):
             operation_id="DataStreamConfigs_GetDataStreamById",
         )
 
+    async def lookup_data_stream(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DataStreamConfig:
+        """Get a data stream config by Id., by name or ID.
+
+        UUID-shaped values call :meth:`get_data_stream_by_id` (falling back to :meth:`get_data_stream_by_name`
+        if no object has that ID); anything else calls :meth:`get_data_stream_by_name`.
+        """
+        return await self._lookup(
+            self.get_data_stream_by_id,
+            self.get_data_stream_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def update_data_stream(
         self,
         id: str,
@@ -2692,6 +2822,18 @@ class AsyncOrchestrationService(AsyncBaseService):
             response_model=PluginConfig,
             request_id=request_id,
             operation_id="ThirdPartyPluginManagement_GetPluginById",
+        )
+
+    async def lookup_plugin(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> PluginConfig:
+        """Get a third party plugin by Id., by name or ID.
+
+        UUID-shaped values call :meth:`get_plugin_by_id` (falling back to :meth:`get_plugin_by_name`
+        if no object has that ID); anything else calls :meth:`get_plugin_by_name`.
+        """
+        return await self._lookup(
+            self.get_plugin_by_id, self.get_plugin_by_name, name_or_id, request_id=request_id
         )
 
     async def update_plugin(

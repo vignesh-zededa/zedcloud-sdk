@@ -33,6 +33,7 @@ from zedcloud.errors import (
     RateLimitError,
     ServerError,
     TransportError,
+    WaitFailedError,
     WaitTimeoutError,
     ZedcloudError,
 )
@@ -55,6 +56,7 @@ __all__ = [
     "ServerError",
     "TokenCredentials",
     "TransportError",
+    "WaitFailedError",
     "WaitTimeoutError",
     "ZedcloudClient",
     "ZedcloudConfig",

@@ -234,6 +234,21 @@ class DiagService(BaseService):
             operation_id="EdgeDiagnostics_GetDeviceTwinConfig",
         )
 
+    def lookup_device_twin_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get current Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_config` (falling back to :meth:`get_device_twin_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_config_by_name`.
+        """
+        return self._lookup(
+            self.get_device_twin_config,
+            self.get_device_twin_config_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def regen_device_config(
         self,
         id: str,
@@ -284,6 +299,21 @@ class DiagService(BaseService):
             operation_id="EdgeDiagnostics_GetDeviceTwinBootstrapConfig",
         )
 
+    def lookup_device_twin_bootstrap_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get bootstrap Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_bootstrap_config` (falling back to :meth:`get_device_twin_bootstrap_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_bootstrap_config_by_name`.
+        """
+        return self._lookup(
+            self.get_device_twin_bootstrap_config,
+            self.get_device_twin_bootstrap_config_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_device_twin_next_config(
         self,
         id: str,
@@ -309,6 +339,21 @@ class DiagService(BaseService):
             operation_id="EdgeDiagnostics_GetDeviceTwinNextConfig",
         )
 
+    def lookup_device_twin_next_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get next Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_next_config` (falling back to :meth:`get_device_twin_next_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_next_config_by_name`.
+        """
+        return self._lookup(
+            self.get_device_twin_next_config,
+            self.get_device_twin_next_config_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_device_twin_offline_next_config(
         self,
         id: str,
@@ -332,6 +377,21 @@ class DiagService(BaseService):
             response_model=ConfigServiceResp,
             request_id=request_id,
             operation_id="EdgeDiagnostics_GetDeviceTwinOfflineNextConfig",
+        )
+
+    def lookup_device_twin_offline_next_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get offline Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_offline_next_config` (falling back to :meth:`get_device_twin_offline_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_offline_config_by_name`.
+        """
+        return self._lookup(
+            self.get_device_twin_offline_next_config,
+            self.get_device_twin_offline_config_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_device_twin_config_by_name(
@@ -840,6 +900,21 @@ class AsyncDiagService(AsyncBaseService):
             operation_id="EdgeDiagnostics_GetDeviceTwinConfig",
         )
 
+    async def lookup_device_twin_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get current Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_config` (falling back to :meth:`get_device_twin_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_config_by_name`.
+        """
+        return await self._lookup(
+            self.get_device_twin_config,
+            self.get_device_twin_config_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def regen_device_config(
         self,
         id: str,
@@ -890,6 +965,21 @@ class AsyncDiagService(AsyncBaseService):
             operation_id="EdgeDiagnostics_GetDeviceTwinBootstrapConfig",
         )
 
+    async def lookup_device_twin_bootstrap_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get bootstrap Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_bootstrap_config` (falling back to :meth:`get_device_twin_bootstrap_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_bootstrap_config_by_name`.
+        """
+        return await self._lookup(
+            self.get_device_twin_bootstrap_config,
+            self.get_device_twin_bootstrap_config_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_device_twin_next_config(
         self,
         id: str,
@@ -915,6 +1005,21 @@ class AsyncDiagService(AsyncBaseService):
             operation_id="EdgeDiagnostics_GetDeviceTwinNextConfig",
         )
 
+    async def lookup_device_twin_next_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get next Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_next_config` (falling back to :meth:`get_device_twin_next_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_next_config_by_name`.
+        """
+        return await self._lookup(
+            self.get_device_twin_next_config,
+            self.get_device_twin_next_config_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_device_twin_offline_next_config(
         self,
         id: str,
@@ -938,6 +1043,21 @@ class AsyncDiagService(AsyncBaseService):
             response_model=ConfigServiceResp,
             request_id=request_id,
             operation_id="EdgeDiagnostics_GetDeviceTwinOfflineNextConfig",
+        )
+
+    async def lookup_device_twin_offline_next_config(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ConfigServiceResp:
+        """Get offline Device twin configuration, by name or ID.
+
+        UUID-shaped values call :meth:`get_device_twin_offline_next_config` (falling back to :meth:`get_device_twin_offline_config_by_name`
+        if no object has that ID); anything else calls :meth:`get_device_twin_offline_config_by_name`.
+        """
+        return await self._lookup(
+            self.get_device_twin_offline_next_config,
+            self.get_device_twin_offline_config_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_device_twin_config_by_name(

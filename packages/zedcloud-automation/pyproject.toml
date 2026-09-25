@@ -1,6 +1,6 @@
 [project]
 name = "zedcloud-automation"
-version = "0.1.0"
+version = "0.2.0"
 description = "Pytest fixtures and helpers for ZEDEDA Zedcloud API automation"
 requires-python = ">=3.10"
 license = { text = "MIT" }

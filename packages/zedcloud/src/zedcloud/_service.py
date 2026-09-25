@@ -3,17 +3,25 @@
 from __future__ import annotations
 
 import inspect
+import re
 from collections.abc import AsyncIterator, Awaitable, Callable, Iterator
 from functools import cache
 from typing import IO, Any
 
 from zedcloud._transport import AsyncTransport, SyncTransport
+from zedcloud.errors import NotFoundError
 
 FileContent = bytes | IO[bytes] | tuple[str, bytes | IO[bytes]]
 """A file to upload: raw bytes, an open binary file, or ``(filename, bytes_or_file)``."""
 
 # Hard stop for servers that ignore the page cursor.
 MAX_PAGES = 10_000
+_UUID = re.compile(r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
+
+
+def looks_like_id(value: str) -> bool:
+    """Zedcloud object IDs are UUIDs; names may be anything else."""
+    return bool(_UUID.match(value))
 
 
 @cache
@@ -61,6 +69,21 @@ class BaseService:
             method, template, api_key_auth=self._security == "api_key", **kwargs
         )
 
+    def _lookup(
+        self,
+        by_id: Callable[..., Any],
+        by_name: Callable[..., Any],
+        name_or_id: str,
+        *,
+        request_id: str | None,
+    ) -> Any:
+        if not looks_like_id(name_or_id):
+            return by_name(name_or_id, request_id=request_id)
+        try:
+            return by_id(name_or_id, request_id=request_id)
+        except NotFoundError:
+            return by_name(name_or_id, request_id=request_id)
+
     def _paginate(
         self,
         fetch: Callable[..., Any],
@@ -100,6 +123,21 @@ class AsyncBaseService:
         return await self._transport.request(
             method, template, api_key_auth=self._security == "api_key", **kwargs
         )
+
+    async def _lookup(
+        self,
+        by_id: Callable[..., Awaitable[Any]],
+        by_name: Callable[..., Awaitable[Any]],
+        name_or_id: str,
+        *,
+        request_id: str | None,
+    ) -> Any:
+        if not looks_like_id(name_or_id):
+            return await by_name(name_or_id, request_id=request_id)
+        try:
+            return await by_id(name_or_id, request_id=request_id)
+        except NotFoundError:
+            return await by_name(name_or_id, request_id=request_id)
 
     async def _paginate(
         self,

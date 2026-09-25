@@ -173,6 +173,21 @@ class NetworksService(BaseService):
             operation_id="EdgeNetworkInstanceConfiguration_GetEdgeNetworkInstance",
         )
 
+    def lookup_edge_network_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> NetInstConfig:
+        """Get edge network instance, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_network_instance` (falling back to :meth:`get_edge_network_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_network_instance_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_network_instance,
+            self.get_edge_network_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def update_edge_network_instance(
         self,
         id: str,
@@ -242,6 +257,21 @@ class NetworksService(BaseService):
             response_model=NetInstStatusMsg,
             request_id=request_id,
             operation_id="EdgeNetworkInstanceStatus_GetEdgeNetworkInstanceStatus",
+        )
+
+    def lookup_edge_network_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> NetInstStatusMsg:
+        """Get edge network instance status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_network_instance_status` (falling back to :meth:`get_edge_network_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_network_instance_status_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_network_instance_status,
+            self.get_edge_network_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_edge_network_instance_by_name(
@@ -690,6 +720,16 @@ class NetworksService(BaseService):
             operation_id="EdgeNetworkConfiguration_GetEdgeNetwork",
         )
 
+    def lookup_edge_network(self, name_or_id: str, *, request_id: str | None = None) -> NetConfig:
+        """Get edge network, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_network` (falling back to :meth:`get_edge_network_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_network_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_network, self.get_edge_network_by_name, name_or_id, request_id=request_id
+        )
+
     def update_edge_network(
         self,
         id: str,
@@ -936,6 +976,21 @@ class AsyncNetworksService(AsyncBaseService):
             operation_id="EdgeNetworkInstanceConfiguration_GetEdgeNetworkInstance",
         )
 
+    async def lookup_edge_network_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> NetInstConfig:
+        """Get edge network instance, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_network_instance` (falling back to :meth:`get_edge_network_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_network_instance_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_network_instance,
+            self.get_edge_network_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def update_edge_network_instance(
         self,
         id: str,
@@ -1005,6 +1060,21 @@ class AsyncNetworksService(AsyncBaseService):
             response_model=NetInstStatusMsg,
             request_id=request_id,
             operation_id="EdgeNetworkInstanceStatus_GetEdgeNetworkInstanceStatus",
+        )
+
+    async def lookup_edge_network_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> NetInstStatusMsg:
+        """Get edge network instance status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_network_instance_status` (falling back to :meth:`get_edge_network_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_network_instance_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_network_instance_status,
+            self.get_edge_network_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_edge_network_instance_by_name(
@@ -1451,6 +1521,18 @@ class AsyncNetworksService(AsyncBaseService):
             response_model=NetConfig,
             request_id=request_id,
             operation_id="EdgeNetworkConfiguration_GetEdgeNetwork",
+        )
+
+    async def lookup_edge_network(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> NetConfig:
+        """Get edge network, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_network` (falling back to :meth:`get_edge_network_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_network_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_network, self.get_edge_network_by_name, name_or_id, request_id=request_id
         )
 
     async def update_edge_network(

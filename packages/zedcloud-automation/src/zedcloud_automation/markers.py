@@ -1,14 +1,13 @@
-"""Pytest markers for Zedcloud automation suites."""
+"""Pytest markers and credential detection for Zedcloud suites."""
 
 from __future__ import annotations
 
-import os
-from collections.abc import Callable
-from typing import Any, TypeVar
+from typing import Any
 
 import pytest
 
-F = TypeVar("F", bound=Callable[..., Any])
+from zedcloud import ConfigError
+from zedcloud.config import ZedcloudConfig, resolve_config
 
 smoke = pytest.mark.smoke
 integration = pytest.mark.integration
@@ -16,18 +15,20 @@ needs_cloud = pytest.mark.needs_cloud
 
 
 def register_markers(config: Any) -> None:
-    config.addinivalue_line("markers", "smoke: read-only smoke checks")
-    config.addinivalue_line("markers", "integration: may create or modify resources")
+    config.addinivalue_line("markers", "smoke: read-only checks against a live tenant")
     config.addinivalue_line(
-        "markers",
-        "needs_cloud: requires ZEDCLOUD_BASE_URL and ZEDCLOUD_TOKEN",
+        "markers", "integration: creates or modifies resources; needs allow_writes on the profile"
     )
+    config.addinivalue_line("markers", "needs_cloud: requires credentials for a live tenant")
 
 
-def credentials_available() -> bool:
-    return bool(os.environ.get("ZEDCLOUD_BASE_URL") and os.environ.get("ZEDCLOUD_TOKEN"))
+def try_resolve(profile: str | None = None) -> ZedcloudConfig | None:
+    """Resolve tenant settings, or ``None`` if none are configured."""
+    try:
+        return resolve_config(profile=profile)
+    except ConfigError:
+        return None
 
 
-def skip_without_credentials() -> None:
-    if not credentials_available():
-        pytest.skip("ZEDCLOUD_BASE_URL and ZEDCLOUD_TOKEN are required")
+def credentials_available(profile: str | None = None) -> bool:
+    return try_resolve(profile) is not None

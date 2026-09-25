@@ -6,6 +6,7 @@ Hierarchy::
     ├── ConfigError                 bad/missing configuration or profile
     ├── TransportError              network failure, no HTTP response
     ├── WaitTimeoutError            a waiter gave up
+    ├── WaitFailedError             a waiter saw a failure state (e.g. a failed job)
     └── ApiError                    the API returned an error status
         ├── BadRequestError         400
         ├── AuthError               401 / 403
@@ -43,6 +44,14 @@ class TransportError(ZedcloudError):
 
 class WaitTimeoutError(ZedcloudError, TimeoutError):
     """A waiter did not observe the expected state before its deadline."""
+
+    def __init__(self, message: str, *, last: Any = None):
+        super().__init__(message)
+        self.last = last
+
+
+class WaitFailedError(ZedcloudError):
+    """A waiter observed a terminal failure state instead of the one it wanted."""
 
     def __init__(self, message: str, *, last: Any = None):
         super().__init__(message)

@@ -302,6 +302,21 @@ class NodesService(BaseService):
             operation_id="HardwareModel_GetGlobalHardwareBrand",
         )
 
+    def lookup_global_hardware_brand(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> SysBrand:
+        """Get global hardware brand, by name or ID.
+
+        UUID-shaped values call :meth:`get_global_hardware_brand` (falling back to :meth:`get_global_hardware_brand_by_name`
+        if no object has that ID); anything else calls :meth:`get_global_hardware_brand_by_name`.
+        """
+        return self._lookup(
+            self.get_global_hardware_brand,
+            self.get_global_hardware_brand_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_global_hardware_brand_by_name(
         self,
         name: str,
@@ -354,6 +369,19 @@ class NodesService(BaseService):
             response_model=SysBrand,
             request_id=request_id,
             operation_id="HardwareModel_GetHardwareBrand",
+        )
+
+    def lookup_hardware_brand(self, name_or_id: str, *, request_id: str | None = None) -> SysBrand:
+        """Get hardware brand, by name or ID.
+
+        UUID-shaped values call :meth:`get_hardware_brand` (falling back to :meth:`get_hardware_brand_by_name`
+        if no object has that ID); anything else calls :meth:`get_hardware_brand_by_name`.
+        """
+        return self._lookup(
+            self.get_hardware_brand,
+            self.get_hardware_brand_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def update_hardware_brand(
@@ -564,6 +592,16 @@ class NodesService(BaseService):
             response_model=CEPCommonSCEPProfile,
             request_id=request_id,
             operation_id="CertificateEnrollmentProfileConfiguration_GetCEPById",
+        )
+
+    def lookup_cep(self, name_or_id: str, *, request_id: str | None = None) -> CEPCommonSCEPProfile:
+        """Get certificate enrollment profile by ID, by name or ID.
+
+        UUID-shaped values call :meth:`get_cep_by_id` (falling back to :meth:`get_cep_by_name`
+        if no object has that ID); anything else calls :meth:`get_cep_by_name`.
+        """
+        return self._lookup(
+            self.get_cep_by_id, self.get_cep_by_name, name_or_id, request_id=request_id
         )
 
     def update_cep(
@@ -818,6 +856,16 @@ class NodesService(BaseService):
             response_model=DeviceConfig,
             request_id=request_id,
             operation_id="EdgeNodeConfiguration_GetEdgeNode",
+        )
+
+    def lookup_edge_node(self, name_or_id: str, *, request_id: str | None = None) -> DeviceConfig:
+        """Get edge node, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node` (falling back to :meth:`get_edge_node_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_node, self.get_edge_node_by_name, name_or_id, request_id=request_id
         )
 
     def update_edge_node(
@@ -1256,6 +1304,21 @@ class NodesService(BaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeStatus",
         )
 
+    def lookup_edge_node_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceStatusMsg:
+        """Get edge node status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_status` (falling back to :meth:`get_edge_node_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_status_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_node_status,
+            self.get_edge_node_status_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_edge_node_edgeview_status(
         self,
         id: str,
@@ -1275,6 +1338,21 @@ class NodesService(BaseService):
             response_model=DeviceRawMetrics,
             request_id=request_id,
             operation_id="EdgeNodeStatus_GetEdgeNodeEdgeviewStatus",
+        )
+
+    def lookup_edge_node_edgeview_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceRawMetrics:
+        """Get edge node edgeview status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_edgeview_status` (falling back to :meth:`get_edge_node_edgeview_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_edgeview_status_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_node_edgeview_status,
+            self.get_edge_node_edgeview_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_edge_node_info(
@@ -1298,6 +1376,21 @@ class NodesService(BaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeInfo",
         )
 
+    def lookup_edge_node_info(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceInfoMsg:
+        """Get edge node info, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_info` (falling back to :meth:`get_edge_node_info_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_info_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_node_info,
+            self.get_edge_node_info_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_edge_node_raw_status(
         self,
         id: str,
@@ -1317,6 +1410,21 @@ class NodesService(BaseService):
             response_model=DeviceRawMetrics,
             request_id=request_id,
             operation_id="EdgeNodeStatus_GetEdgeNodeRawStatus",
+        )
+
+    def lookup_edge_node_raw_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceRawMetrics:
+        """Get edge node raw status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_raw_status` (falling back to :meth:`get_edge_node_raw_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_raw_status_by_name`.
+        """
+        return self._lookup(
+            self.get_edge_node_raw_status,
+            self.get_edge_node_raw_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_edge_node_single_use_eve_image(
@@ -2456,6 +2564,19 @@ class NodesService(BaseService):
             operation_id="ResourceGroup_GetResourceGroup",
         )
 
+    def lookup_resource_group(self, name_or_id: str, *, request_id: str | None = None) -> Tag:
+        """Get resource group, by name or ID.
+
+        UUID-shaped values call :meth:`get_resource_group` (falling back to :meth:`get_resource_group_by_name`
+        if no object has that ID); anything else calls :meth:`get_resource_group_by_name`.
+        """
+        return self._lookup(
+            self.get_resource_group,
+            self.get_resource_group_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def update_resource_group(
         self,
         id: str,
@@ -2527,6 +2648,21 @@ class NodesService(BaseService):
             response_model=TagStatusMsg,
             request_id=request_id,
             operation_id="ResourceGroupStatus_GetResourceGroupStatusById",
+        )
+
+    def lookup_resource_group_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> TagStatusMsg:
+        """Get resource group status, by name or ID.
+
+        UUID-shaped values call :meth:`get_resource_group_status_by_id` (falling back to :meth:`get_resource_group_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_resource_group_status_by_name`.
+        """
+        return self._lookup(
+            self.get_resource_group_status_by_id,
+            self.get_resource_group_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_resource_group_events(
@@ -3337,6 +3473,21 @@ class NodesService(BaseService):
             operation_id="HardwareModel_GetGlobalHardwareModel",
         )
 
+    def lookup_global_hardware_model(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> SysModel:
+        """Get global hardware model, by name or ID.
+
+        UUID-shaped values call :meth:`get_global_hardware_model` (falling back to :meth:`get_global_hardware_model_by_name`
+        if no object has that ID); anything else calls :meth:`get_global_hardware_model_by_name`.
+        """
+        return self._lookup(
+            self.get_global_hardware_model,
+            self.get_global_hardware_model_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def get_global_hardware_model_by_name(
         self,
         name: str,
@@ -3384,6 +3535,19 @@ class NodesService(BaseService):
             response_model=SysModel,
             request_id=request_id,
             operation_id="HardwareModel_GetHardwareModel",
+        )
+
+    def lookup_hardware_model(self, name_or_id: str, *, request_id: str | None = None) -> SysModel:
+        """Get hardware model, by name or ID.
+
+        UUID-shaped values call :meth:`get_hardware_model` (falling back to :meth:`get_hardware_model_by_name`
+        if no object has that ID); anything else calls :meth:`get_hardware_model_by_name`.
+        """
+        return self._lookup(
+            self.get_hardware_model,
+            self.get_hardware_model_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def update_hardware_model(
@@ -3987,6 +4151,21 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="HardwareModel_GetGlobalHardwareBrand",
         )
 
+    async def lookup_global_hardware_brand(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> SysBrand:
+        """Get global hardware brand, by name or ID.
+
+        UUID-shaped values call :meth:`get_global_hardware_brand` (falling back to :meth:`get_global_hardware_brand_by_name`
+        if no object has that ID); anything else calls :meth:`get_global_hardware_brand_by_name`.
+        """
+        return await self._lookup(
+            self.get_global_hardware_brand,
+            self.get_global_hardware_brand_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_global_hardware_brand_by_name(
         self,
         name: str,
@@ -4039,6 +4218,21 @@ class AsyncNodesService(AsyncBaseService):
             response_model=SysBrand,
             request_id=request_id,
             operation_id="HardwareModel_GetHardwareBrand",
+        )
+
+    async def lookup_hardware_brand(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> SysBrand:
+        """Get hardware brand, by name or ID.
+
+        UUID-shaped values call :meth:`get_hardware_brand` (falling back to :meth:`get_hardware_brand_by_name`
+        if no object has that ID); anything else calls :meth:`get_hardware_brand_by_name`.
+        """
+        return await self._lookup(
+            self.get_hardware_brand,
+            self.get_hardware_brand_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def update_hardware_brand(
@@ -4249,6 +4443,18 @@ class AsyncNodesService(AsyncBaseService):
             response_model=CEPCommonSCEPProfile,
             request_id=request_id,
             operation_id="CertificateEnrollmentProfileConfiguration_GetCEPById",
+        )
+
+    async def lookup_cep(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> CEPCommonSCEPProfile:
+        """Get certificate enrollment profile by ID, by name or ID.
+
+        UUID-shaped values call :meth:`get_cep_by_id` (falling back to :meth:`get_cep_by_name`
+        if no object has that ID); anything else calls :meth:`get_cep_by_name`.
+        """
+        return await self._lookup(
+            self.get_cep_by_id, self.get_cep_by_name, name_or_id, request_id=request_id
         )
 
     async def update_cep(
@@ -4503,6 +4709,18 @@ class AsyncNodesService(AsyncBaseService):
             response_model=DeviceConfig,
             request_id=request_id,
             operation_id="EdgeNodeConfiguration_GetEdgeNode",
+        )
+
+    async def lookup_edge_node(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceConfig:
+        """Get edge node, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node` (falling back to :meth:`get_edge_node_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_node, self.get_edge_node_by_name, name_or_id, request_id=request_id
         )
 
     async def update_edge_node(
@@ -4941,6 +5159,21 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeStatus",
         )
 
+    async def lookup_edge_node_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceStatusMsg:
+        """Get edge node status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_status` (falling back to :meth:`get_edge_node_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_node_status,
+            self.get_edge_node_status_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_edge_node_edgeview_status(
         self,
         id: str,
@@ -4960,6 +5193,21 @@ class AsyncNodesService(AsyncBaseService):
             response_model=DeviceRawMetrics,
             request_id=request_id,
             operation_id="EdgeNodeStatus_GetEdgeNodeEdgeviewStatus",
+        )
+
+    async def lookup_edge_node_edgeview_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceRawMetrics:
+        """Get edge node edgeview status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_edgeview_status` (falling back to :meth:`get_edge_node_edgeview_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_edgeview_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_node_edgeview_status,
+            self.get_edge_node_edgeview_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_edge_node_info(
@@ -4983,6 +5231,21 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="EdgeNodeStatus_GetEdgeNodeInfo",
         )
 
+    async def lookup_edge_node_info(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceInfoMsg:
+        """Get edge node info, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_info` (falling back to :meth:`get_edge_node_info_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_info_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_node_info,
+            self.get_edge_node_info_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_edge_node_raw_status(
         self,
         id: str,
@@ -5002,6 +5265,21 @@ class AsyncNodesService(AsyncBaseService):
             response_model=DeviceRawMetrics,
             request_id=request_id,
             operation_id="EdgeNodeStatus_GetEdgeNodeRawStatus",
+        )
+
+    async def lookup_edge_node_raw_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DeviceRawMetrics:
+        """Get edge node raw status, by name or ID.
+
+        UUID-shaped values call :meth:`get_edge_node_raw_status` (falling back to :meth:`get_edge_node_raw_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_edge_node_raw_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_edge_node_raw_status,
+            self.get_edge_node_raw_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_edge_node_single_use_eve_image(
@@ -6141,6 +6419,19 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="ResourceGroup_GetResourceGroup",
         )
 
+    async def lookup_resource_group(self, name_or_id: str, *, request_id: str | None = None) -> Tag:
+        """Get resource group, by name or ID.
+
+        UUID-shaped values call :meth:`get_resource_group` (falling back to :meth:`get_resource_group_by_name`
+        if no object has that ID); anything else calls :meth:`get_resource_group_by_name`.
+        """
+        return await self._lookup(
+            self.get_resource_group,
+            self.get_resource_group_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def update_resource_group(
         self,
         id: str,
@@ -6212,6 +6503,21 @@ class AsyncNodesService(AsyncBaseService):
             response_model=TagStatusMsg,
             request_id=request_id,
             operation_id="ResourceGroupStatus_GetResourceGroupStatusById",
+        )
+
+    async def lookup_resource_group_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> TagStatusMsg:
+        """Get resource group status, by name or ID.
+
+        UUID-shaped values call :meth:`get_resource_group_status_by_id` (falling back to :meth:`get_resource_group_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_resource_group_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_resource_group_status_by_id,
+            self.get_resource_group_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_resource_group_events(
@@ -7022,6 +7328,21 @@ class AsyncNodesService(AsyncBaseService):
             operation_id="HardwareModel_GetGlobalHardwareModel",
         )
 
+    async def lookup_global_hardware_model(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> SysModel:
+        """Get global hardware model, by name or ID.
+
+        UUID-shaped values call :meth:`get_global_hardware_model` (falling back to :meth:`get_global_hardware_model_by_name`
+        if no object has that ID); anything else calls :meth:`get_global_hardware_model_by_name`.
+        """
+        return await self._lookup(
+            self.get_global_hardware_model,
+            self.get_global_hardware_model_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def get_global_hardware_model_by_name(
         self,
         name: str,
@@ -7069,6 +7390,21 @@ class AsyncNodesService(AsyncBaseService):
             response_model=SysModel,
             request_id=request_id,
             operation_id="HardwareModel_GetHardwareModel",
+        )
+
+    async def lookup_hardware_model(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> SysModel:
+        """Get hardware model, by name or ID.
+
+        UUID-shaped values call :meth:`get_hardware_model` (falling back to :meth:`get_hardware_model_by_name`
+        if no object has that ID); anything else calls :meth:`get_hardware_model_by_name`.
+        """
+        return await self._lookup(
+            self.get_hardware_model,
+            self.get_hardware_model_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def update_hardware_model(

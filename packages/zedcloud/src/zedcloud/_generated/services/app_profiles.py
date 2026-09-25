@@ -159,6 +159,18 @@ class AppProfilesService(BaseService):
             operation_id="AppProfileService_GetAppProfile",
         )
 
+    def lookup_app_profile(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AppProfileRead:
+        """Get app profile, by name or ID.
+
+        UUID-shaped values call :meth:`get_app_profile` (falling back to :meth:`get_app_profile_by_name`
+        if no object has that ID); anything else calls :meth:`get_app_profile_by_name`.
+        """
+        return self._lookup(
+            self.get_app_profile, self.get_app_profile_by_name, name_or_id, request_id=request_id
+        )
+
     def update_app_profile(
         self,
         id: str,
@@ -442,6 +454,18 @@ class AppProfilesService(BaseService):
             operation_id="AssetGroupService_GetAssetGroup",
         )
 
+    def lookup_asset_group(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AssetGroupRead:
+        """Get asset group, by name or ID.
+
+        UUID-shaped values call :meth:`get_asset_group` (falling back to :meth:`get_asset_group_by_name`
+        if no object has that ID); anything else calls :meth:`get_asset_group_by_name`.
+        """
+        return self._lookup(
+            self.get_asset_group, self.get_asset_group_by_name, name_or_id, request_id=request_id
+        )
+
     def update_asset_group(
         self,
         id: str,
@@ -638,6 +662,21 @@ class AppProfilesService(BaseService):
             response_model=ProfileDeployment,
             request_id=request_id,
             operation_id="ProfileDeploymentService_GetProfileDeployment",
+        )
+
+    def lookup_profile_deployment(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ProfileDeployment:
+        """Get profile deployment, by name or ID.
+
+        UUID-shaped values call :meth:`get_profile_deployment` (falling back to :meth:`get_profile_deployment_by_name`
+        if no object has that ID); anything else calls :meth:`get_profile_deployment_by_name`.
+        """
+        return self._lookup(
+            self.get_profile_deployment,
+            self.get_profile_deployment_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def update_profile_deployment(
@@ -887,6 +926,18 @@ class AsyncAppProfilesService(AsyncBaseService):
             response_model=AppProfileRead,
             request_id=request_id,
             operation_id="AppProfileService_GetAppProfile",
+        )
+
+    async def lookup_app_profile(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AppProfileRead:
+        """Get app profile, by name or ID.
+
+        UUID-shaped values call :meth:`get_app_profile` (falling back to :meth:`get_app_profile_by_name`
+        if no object has that ID); anything else calls :meth:`get_app_profile_by_name`.
+        """
+        return await self._lookup(
+            self.get_app_profile, self.get_app_profile_by_name, name_or_id, request_id=request_id
         )
 
     async def update_app_profile(
@@ -1172,6 +1223,18 @@ class AsyncAppProfilesService(AsyncBaseService):
             operation_id="AssetGroupService_GetAssetGroup",
         )
 
+    async def lookup_asset_group(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> AssetGroupRead:
+        """Get asset group, by name or ID.
+
+        UUID-shaped values call :meth:`get_asset_group` (falling back to :meth:`get_asset_group_by_name`
+        if no object has that ID); anything else calls :meth:`get_asset_group_by_name`.
+        """
+        return await self._lookup(
+            self.get_asset_group, self.get_asset_group_by_name, name_or_id, request_id=request_id
+        )
+
     async def update_asset_group(
         self,
         id: str,
@@ -1368,6 +1431,21 @@ class AsyncAppProfilesService(AsyncBaseService):
             response_model=ProfileDeployment,
             request_id=request_id,
             operation_id="ProfileDeploymentService_GetProfileDeployment",
+        )
+
+    async def lookup_profile_deployment(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> ProfileDeployment:
+        """Get profile deployment, by name or ID.
+
+        UUID-shaped values call :meth:`get_profile_deployment` (falling back to :meth:`get_profile_deployment_by_name`
+        if no object has that ID); anything else calls :meth:`get_profile_deployment_by_name`.
+        """
+        return await self._lookup(
+            self.get_profile_deployment,
+            self.get_profile_deployment_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def update_profile_deployment(

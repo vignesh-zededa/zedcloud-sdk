@@ -390,6 +390,16 @@ class StorageService(BaseService):
             operation_id="ImageConfiguration_GetImage",
         )
 
+    def lookup_image(self, name_or_id: str, *, request_id: str | None = None) -> ImageConfig:
+        """Get edge application image, by name or ID.
+
+        UUID-shaped values call :meth:`get_image` (falling back to :meth:`get_image_by_name`
+        if no object has that ID); anything else calls :meth:`get_image_by_name`.
+        """
+        return self._lookup(
+            self.get_image, self.get_image_by_name, name_or_id, request_id=request_id
+        )
+
     def update_image(
         self,
         id: str,
@@ -912,6 +922,16 @@ class StorageService(BaseService):
             operation_id="DatastoreConfiguration_GetDatastore",
         )
 
+    def lookup_datastore(self, name_or_id: str, *, request_id: str | None = None) -> DatastoreInfo:
+        """Get datastore, by name or ID.
+
+        UUID-shaped values call :meth:`get_datastore` (falling back to :meth:`get_datastore_by_name`
+        if no object has that ID); anything else calls :meth:`get_datastore_by_name`.
+        """
+        return self._lookup(
+            self.get_datastore, self.get_datastore_by_name, name_or_id, request_id=request_id
+        )
+
     def update_datastore(
         self,
         id: str,
@@ -1168,6 +1188,21 @@ class StorageService(BaseService):
             operation_id="VolumeInstanceConfiguration_GetVolumeInstance",
         )
 
+    def lookup_volume_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> VolInstConfig:
+        """Get edge volume instance, by name or ID.
+
+        UUID-shaped values call :meth:`get_volume_instance` (falling back to :meth:`get_volume_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_volume_instance_by_name`.
+        """
+        return self._lookup(
+            self.get_volume_instance,
+            self.get_volume_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     def update_volume_instance(
         self,
         id: str,
@@ -1233,6 +1268,21 @@ class StorageService(BaseService):
             response_model=VolInstStatusMsg,
             request_id=request_id,
             operation_id="VolumeInstanceStatus_GetVolumeInstanceStatus",
+        )
+
+    def lookup_volume_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> VolInstStatusMsg:
+        """Get edge volume instance status, by name or ID.
+
+        UUID-shaped values call :meth:`get_volume_instance_status` (falling back to :meth:`get_volume_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_volume_instance_status_by_name`.
+        """
+        return self._lookup(
+            self.get_volume_instance_status,
+            self.get_volume_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     def get_volume_instance_events(
@@ -2047,6 +2097,16 @@ class AsyncStorageService(AsyncBaseService):
             operation_id="ImageConfiguration_GetImage",
         )
 
+    async def lookup_image(self, name_or_id: str, *, request_id: str | None = None) -> ImageConfig:
+        """Get edge application image, by name or ID.
+
+        UUID-shaped values call :meth:`get_image` (falling back to :meth:`get_image_by_name`
+        if no object has that ID); anything else calls :meth:`get_image_by_name`.
+        """
+        return await self._lookup(
+            self.get_image, self.get_image_by_name, name_or_id, request_id=request_id
+        )
+
     async def update_image(
         self,
         id: str,
@@ -2569,6 +2629,18 @@ class AsyncStorageService(AsyncBaseService):
             operation_id="DatastoreConfiguration_GetDatastore",
         )
 
+    async def lookup_datastore(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> DatastoreInfo:
+        """Get datastore, by name or ID.
+
+        UUID-shaped values call :meth:`get_datastore` (falling back to :meth:`get_datastore_by_name`
+        if no object has that ID); anything else calls :meth:`get_datastore_by_name`.
+        """
+        return await self._lookup(
+            self.get_datastore, self.get_datastore_by_name, name_or_id, request_id=request_id
+        )
+
     async def update_datastore(
         self,
         id: str,
@@ -2825,6 +2897,21 @@ class AsyncStorageService(AsyncBaseService):
             operation_id="VolumeInstanceConfiguration_GetVolumeInstance",
         )
 
+    async def lookup_volume_instance(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> VolInstConfig:
+        """Get edge volume instance, by name or ID.
+
+        UUID-shaped values call :meth:`get_volume_instance` (falling back to :meth:`get_volume_instance_by_name`
+        if no object has that ID); anything else calls :meth:`get_volume_instance_by_name`.
+        """
+        return await self._lookup(
+            self.get_volume_instance,
+            self.get_volume_instance_by_name,
+            name_or_id,
+            request_id=request_id,
+        )
+
     async def update_volume_instance(
         self,
         id: str,
@@ -2890,6 +2977,21 @@ class AsyncStorageService(AsyncBaseService):
             response_model=VolInstStatusMsg,
             request_id=request_id,
             operation_id="VolumeInstanceStatus_GetVolumeInstanceStatus",
+        )
+
+    async def lookup_volume_instance_status(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> VolInstStatusMsg:
+        """Get edge volume instance status, by name or ID.
+
+        UUID-shaped values call :meth:`get_volume_instance_status` (falling back to :meth:`get_volume_instance_status_by_name`
+        if no object has that ID); anything else calls :meth:`get_volume_instance_status_by_name`.
+        """
+        return await self._lookup(
+            self.get_volume_instance_status,
+            self.get_volume_instance_status_by_name,
+            name_or_id,
+            request_id=request_id,
         )
 
     async def get_volume_instance_events(

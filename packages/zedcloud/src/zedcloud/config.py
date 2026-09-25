@@ -233,14 +233,20 @@ def resolve_config(
     verify: bool | str | None = None,
     config_path: Path | str | None = None,
 ) -> ZedcloudConfig:
-    """Merge explicit arguments > profile (or environment) into a config.
+    """Merge explicit arguments over a profile or the environment.
 
-    A profile is used when ``profile`` is given or ``ZEDCLOUD_PROFILE`` is set;
-    otherwise ``ZEDCLOUD_*`` environment variables are the fallback source.
+    The source is chosen in this order: ``profile``; ``$ZEDCLOUD_PROFILE``;
+    ``ZEDCLOUD_*`` variables (when ``ZEDCLOUD_BASE_URL`` is set); the profiles
+    file's ``default``. Explicit arguments always win over the source.
     """
     env = os.environ
     if isinstance(profile, str) or (profile is None and env.get("ZEDCLOUD_PROFILE")):
         profile = get_profile(profile if isinstance(profile, str) else None, config_path)
+    elif profile is None and not base_url and not env.get("ZEDCLOUD_BASE_URL"):
+        # Nothing in the environment: fall back to the profiles file's default.
+        profiles, default = load_profiles(config_path)
+        if default:
+            profile = profiles[default]
 
     if isinstance(profile, Profile):
         src_base = profile.base_url

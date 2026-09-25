@@ -255,6 +255,18 @@ class NodeClustersService(BaseService):
             operation_id="EdgeNodeClusterConfiguration_GetCluster",
         )
 
+    def lookup_cluster(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> EdgeNodeClusterConfigSummary:
+        """Get Edge-Node Cluster., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster` (falling back to :meth:`get_cluster_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_by_name`.
+        """
+        return self._lookup(
+            self.get_cluster, self.get_cluster_by_name, name_or_id, request_id=request_id
+        )
+
     def update_cluster(
         self,
         id: str,
@@ -707,6 +719,18 @@ class AsyncNodeClustersService(AsyncBaseService):
             response_model=EdgeNodeClusterConfigSummary,
             request_id=request_id,
             operation_id="EdgeNodeClusterConfiguration_GetCluster",
+        )
+
+    async def lookup_cluster(
+        self, name_or_id: str, *, request_id: str | None = None
+    ) -> EdgeNodeClusterConfigSummary:
+        """Get Edge-Node Cluster., by name or ID.
+
+        UUID-shaped values call :meth:`get_cluster` (falling back to :meth:`get_cluster_by_name`
+        if no object has that ID); anything else calls :meth:`get_cluster_by_name`.
+        """
+        return await self._lookup(
+            self.get_cluster, self.get_cluster_by_name, name_or_id, request_id=request_id
         )
 
     async def update_cluster(
